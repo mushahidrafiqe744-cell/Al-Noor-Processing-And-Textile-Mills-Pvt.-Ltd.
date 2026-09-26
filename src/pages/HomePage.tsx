@@ -38,7 +38,7 @@ export const HomePage: React.FC = () => {
             src={IMAGES.heroTextileMill}
             alt="Al-Noor Textile Mills Factory Floor"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center brightness-75 scale-105 transform animate-pulse duration-1000"
+            className="w-full h-full object-cover object-center brightness-75 scale-100 transition-transform duration-1000"
             onError={e => {
               (e.currentTarget as HTMLElement).style.display = 'none';
             }}

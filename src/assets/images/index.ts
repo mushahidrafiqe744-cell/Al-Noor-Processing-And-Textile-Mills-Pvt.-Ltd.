@@ -1,10 +1,16 @@
+import heroTextileMill from './hero_textile_mill_1790250536049.jpg';
+import fabricDyeing from './fabric_dyeing_process_1790250563187.jpg';
+import textileFinishing from './textile_finishing_stenter_1790250578392.jpg';
+import qualityLab from './quality_lab_inspection_1790250594361.jpg';
+import textileWarehouse from './textile_rolls_warehouse_1790250611068.jpg';
+
 // Verified generated assets
 export const IMAGES = {
-  heroTextileMill: '/src/assets/images/hero_textile_mill_1790250536049.jpg',
-  fabricDyeing: '/src/assets/images/fabric_dyeing_process_1790250563187.jpg',
-  textileFinishing: '/src/assets/images/textile_finishing_stenter_1790250578392.jpg',
-  qualityLab: '/src/assets/images/quality_lab_inspection_1790250594361.jpg',
-  textileWarehouse: '/src/assets/images/textile_rolls_warehouse_1790250611068.jpg',
+  heroTextileMill,
+  fabricDyeing,
+  textileFinishing,
+  qualityLab,
+  textileWarehouse,
 };
 
 // Fallback high-contrast textile SVG placeholders for ultra reliability
