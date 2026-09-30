@@ -100,14 +100,14 @@ export const AdminPage: React.FC = () => {
 
   if (!isAdminLoggedIn) {
     return (
-      <div className="min-h-[80vh] flex items-center justify-center p-6 bg-[#FAFBFC]">
-        <div className="max-w-md w-full bg-[#0B192C] text-white p-8 rounded-2xl border border-[#D4AF37]/40 shadow-2xl space-y-6">
+      <div className="min-h-[80vh] flex items-center justify-center p-6 bg-[#F6F5EF]">
+        <div className="max-w-md w-full bg-[#063F3A] text-white p-8 rounded border border-[#C8A95A]/35 shadow-2xl space-y-6">
           <div className="text-center space-y-2">
-            <div className="w-12 h-12 rounded-xl bg-[#12243F] border border-[#D4AF37] flex items-center justify-center mx-auto text-[#D4AF37]">
+            <div className="w-12 h-12 rounded bg-[#042F2B] border border-[#C8A95A]/35 flex items-center justify-center mx-auto text-[#A7E85A]">
               <Lock className="w-6 h-6" />
             </div>
             <h2 className="text-xl font-bold font-brand text-white">Al-Noor Administrative Portal</h2>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-[#F6F5EF]/75">
               Enter authorized administrator credentials to manage mill inquiries, products, and website content.
             </p>
           </div>
@@ -120,7 +120,7 @@ export const AdminPage: React.FC = () => {
             className="space-y-4"
           >
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#F6F5EF]/80 mb-1">
                 Admin Security Key
               </label>
               <input
@@ -129,17 +129,17 @@ export const AdminPage: React.FC = () => {
                 placeholder="Enter password (e.g. alnoor2026)"
                 value={passwordInput}
                 onChange={e => setPasswordInput(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-lg bg-[#12243F] border border-slate-700 text-white text-sm focus:outline-none focus:border-[#D4AF37]"
+                className="w-full px-3.5 py-2.5 rounded bg-[#042F2B] border border-primary/20 text-white text-sm focus:outline-none focus:border-[#C8A95A]"
               />
-              <div className="text-[11px] text-slate-400 mt-1.5 flex items-center gap-1">
+              <div className="text-[11px] text-[#F6F5EF]/60 mt-1.5 flex items-center gap-1">
                 <span>Default administrative key:</span>
-                <span className="font-mono text-[#D4AF37] font-semibold">alnoor2026</span>
+                <span className="font-mono text-[#A7E85A] font-bold">alnoor2026</span>
               </div>
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 rounded-lg text-xs uppercase tracking-wider font-bold text-slate-950 gold-gradient-bg hover:brightness-110 transition-all cursor-pointer shadow-md"
+              className="w-full py-3 rounded text-xs uppercase tracking-wider font-bold text-[#063F3A] bg-[#A7E85A] hover:bg-[#A7E85A]/90 transition-all cursor-pointer shadow-md font-brand"
             >
               Authenticate & Enter
             </button>

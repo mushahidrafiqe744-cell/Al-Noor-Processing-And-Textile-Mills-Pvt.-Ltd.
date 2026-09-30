@@ -1,217 +1,215 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { IMAGES } from '../assets/images';
 import {
   ArrowRight,
   ShieldCheck,
+  Cpu,
+  Factory,
+  Users,
   Award,
   Layers,
   Droplets,
   Sparkles,
-  Cpu,
   CheckCircle2,
-  Factory,
-  Users,
-  Compass,
-  FileText,
-  ChevronRight
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  ExternalLink
 } from 'lucide-react';
 
 export const HomePage: React.FC = () => {
-  const { settings, services, products, navigate, openQuoteModal, openLightbox } = useApp();
+  const { products, navigate, openQuoteModal, openLightbox, settings } = useApp();
+  const [activeTab, setActiveTab] = useState<'all' | 'machinery' | 'fabrics'>('all');
 
-  const iconMap: Record<string, any> = {
-    Layers: Layers,
-    Droplets: Droplets,
-    Sparkles: Sparkles,
-    Cpu: Cpu,
-    ShieldCheck: ShieldCheck
+  // Contact form state
+  const [formData, setFormData] = useState({
+    fullName: '',
+    companyName: '',
+    email: '',
+    phone: '',
+    subject: 'General Inquiry',
+    message: ''
+  });
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+    setTimeout(() => {
+      setFormSubmitted(false);
+      setFormData({ fullName: '', companyName: '', email: '', phone: '', subject: 'General Inquiry', message: '' });
+    }, 4000);
   };
 
+  const galleryImages = [
+    { url: IMAGES.heroTextileFactory, title: 'Continuous Dyeing & Processing Floor', category: 'machinery' },
+    { url: IMAGES.aboutTextileProcessing, title: 'Advanced Stenter Machine', category: 'machinery' },
+    { url: IMAGES.productProcessedFabrics, title: 'High-Density Raw Processed Fabrics', category: 'fabrics' },
+    { url: IMAGES.productDyedFabrics, title: 'Uniform Vat and Reactive Dyeing', category: 'fabrics' },
+    { url: IMAGES.productFinishedFabrics, title: 'Finished Fabric Inspection & QA', category: 'fabrics' },
+    { url: IMAGES.productCustomProcessing, title: 'Logistics and Roll Dispatch Center', category: 'machinery' }
+  ];
+
+  const filteredGallery = activeTab === 'all' 
+    ? galleryImages 
+    : galleryImages.filter(img => img.category === activeTab);
+
   return (
-    <div className="w-full bg-[#FAFBFC]">
+    <div className="w-full bg-[#F6F5EF] text-[#123C38]">
       {/* 1. HERO SECTION */}
-      <section className="relative bg-[#070D1E] text-white min-h-[90vh] flex items-center overflow-hidden border-b border-slate-800">
-        {/* Background Textile Factory Photo with Scrim */}
+      <section className="relative bg-[#063F3A] text-white min-h-[95vh] flex items-center overflow-hidden border-b border-[#063F3A]/20">
+        {/* Background Textile Factory Photo with Premium Deep Green Scrim */}
         <div className="absolute inset-0 z-0">
           <img
-            src={IMAGES.heroTextileMill}
-            alt="Al-Noor Textile Mills Factory Floor"
+            src={IMAGES.heroTextileFactory}
+            alt="Al-Noor Textile Mills Industrial Production Floor"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center brightness-75 scale-100 transition-transform duration-1000"
-            onError={e => {
-              (e.currentTarget as HTMLElement).style.display = 'none';
-            }}
+            className="w-full h-full object-cover object-center brightness-[0.82] scale-100 transition-transform duration-1000"
           />
-          {/* Deep Navy Gradient Scrim */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070D1E] via-[#0B192C]/90 to-[#070D1E]/80 backdrop-blur-[1px]" />
+          {/* Multi-layered Deep Forest Scrim for WCAG AA 4.5:1 Contrast on Left, transparent on Right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#063F3A]/90 via-[#063F3A]/40 to-[#063F3A]/10" />
           <div className="absolute inset-0 textile-grid-dark" />
         </div>
 
         {/* Hero Content Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-28 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
           <div className="max-w-3xl">
-            {/* Trust Kicker */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#12243F]/80 border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-semibold uppercase tracking-wider mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-ping" />
-              <span>Sargodha Road, Faisalabad • Certified Textile Mills</span>
+            {/* Small Elegant Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded bg-[#063F3A]/80 border border-[#C8A95A]/35 text-[#C8A95A] text-[11px] font-bold uppercase tracking-wider mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#A7E85A] animate-ping" />
+              <span>AL-NOOR PROCESSING & TEXTILE MILLS</span>
             </div>
 
-            {/* Hero Main Heading */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight font-brand mb-4">
-              Al-Noor Processing And <br className="hidden sm:inline" />
-              <span className="gold-gradient-text">Textile Mills</span> (Pvt.) Ltd.
+            {/* Large Main Heading */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12] font-brand mb-6 text-wrap">
+              Quality Textile Processing,<br />
+              Built for <span className="text-[#A7E85A]">Global Standards</span>
             </h1>
 
-            {/* Subtitle */}
-            <h2 className="text-lg sm:text-xl font-semibold text-amber-200/90 mb-4 tracking-normal">
-              "{settings.tagline}"
-            </h2>
-
             {/* Description */}
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mb-8">
-              {settings.subtitle}
+            <p className="text-base sm:text-lg text-[#F6F5EF]/85 leading-relaxed max-w-2xl mb-10 font-normal">
+              Delivering reliable textile processing solutions with a commitment to quality, consistency and customer satisfaction. Located in the heart of Faisalabad’s premier industrial zone.
             </p>
 
-            {/* Hero Action Buttons */}
+            {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4">
               <button
-                onClick={() => openQuoteModal()}
-                className="px-7 py-3.5 rounded-xl text-xs uppercase tracking-wider font-bold text-slate-950 gold-gradient-bg hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-[#D4AF37]/20 flex items-center gap-2 cursor-pointer"
+                onClick={() => navigate('services')}
+                className="px-7 py-4 rounded text-xs uppercase tracking-wider font-bold text-[#063F3A] bg-[#A7E85A] hover:bg-[#A7E85A]/90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-[#A7E85A]/10 flex items-center gap-2 cursor-pointer"
               >
-                <span>Get a Quote</span>
-                <ChevronRight className="w-4 h-4" />
+                <span>Explore Our Capabilities</span>
+                <ArrowRight className="w-4 h-4 stroke-[2.5px]" />
               </button>
 
               <button
-                onClick={() => navigate('services')}
-                className="px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider font-semibold text-white bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600 transition-all flex items-center gap-2 cursor-pointer backdrop-blur-sm"
+                onClick={() => navigate('contact')}
+                className="px-6 py-4 rounded text-xs uppercase tracking-wider font-semibold text-white bg-transparent border border-white/20 hover:bg-white/5 transition-all flex items-center gap-2 cursor-pointer"
               >
-                <span>Explore Our Services</span>
-                <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
+                <span>Contact Us</span>
               </button>
             </div>
           </div>
 
-          {/* Animated Statistics Strip */}
-          <div className="mt-16 pt-10 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-[#12243F]/60 backdrop-blur-sm border border-slate-800 p-4 sm:p-5 rounded-xl">
-              <div className="text-2xl sm:text-3xl font-extrabold font-brand text-[#D4AF37] tabular-nums">
-                {settings.yearsExperience}+
+          {/* Clean Trust Indicators Bar */}
+          <div className="mt-16 pt-10 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded bg-[#063F3A]/80 border border-[#C8A95A]/30 flex items-center justify-center shrink-0">
+                <Award className="w-5 h-5 text-[#A7E85A]" />
               </div>
-              <div className="text-xs uppercase tracking-wider text-slate-300 font-medium mt-1">
-                Years of Experience
-              </div>
-            </div>
-
-            <div className="bg-[#12243F]/60 backdrop-blur-sm border border-slate-800 p-4 sm:p-5 rounded-xl">
-              <div className="text-2xl sm:text-3xl font-extrabold font-brand text-[#D4AF37] tabular-nums">
-                {settings.employeesCount}+
-              </div>
-              <div className="text-xs uppercase tracking-wider text-slate-300 font-medium mt-1">
-                Skilled Employees
+              <div>
+                <h4 className="text-sm font-bold text-white uppercase tracking-wider">Quality Focused</h4>
+                <p className="text-[11px] text-[#F6F5EF]/70 mt-0.5">Strict ASTM 4-Point Standardized Auditing</p>
               </div>
             </div>
 
-            <div className="bg-[#12243F]/60 backdrop-blur-sm border border-slate-800 p-4 sm:p-5 rounded-xl">
-              <div className="text-2xl sm:text-3xl font-extrabold font-brand text-[#D4AF37] tabular-nums">
-                {settings.metersProcessed}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded bg-[#063F3A]/80 border border-[#C8A95A]/30 flex items-center justify-center shrink-0">
+                <Cpu className="w-5 h-5 text-[#A7E85A]" />
               </div>
-              <div className="text-xs uppercase tracking-wider text-slate-300 font-medium mt-1">
-                Meters Processed
+              <div>
+                <h4 className="text-sm font-bold text-white uppercase tracking-wider">Modern Processing</h4>
+                <p className="text-[11px] text-[#F6F5EF]/70 mt-0.5">Continuous Pad-Steam and Optical Weft Correction</p>
               </div>
             </div>
 
-            <div className="bg-[#12243F]/60 backdrop-blur-sm border border-slate-800 p-4 sm:p-5 rounded-xl">
-              <div className="text-2xl sm:text-3xl font-extrabold font-brand text-[#D4AF37] tabular-nums">
-                {settings.qualityFocus}%
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded bg-[#063F3A]/80 border border-[#C8A95A]/30 flex items-center justify-center shrink-0">
+                <Factory className="w-5 h-5 text-[#A7E85A]" />
               </div>
-              <div className="text-xs uppercase tracking-wider text-slate-300 font-medium mt-1">
-                Quality Focus
+              <div>
+                <h4 className="text-sm font-bold text-white uppercase tracking-wider">Reliable Delivery</h4>
+                <p className="text-[11px] text-[#F6F5EF]/70 mt-0.5">Transparent Production Yield Tracking & Lead Times</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. ABOUT PREVIEW SECTION */}
-      <section className="py-20 bg-white border-b border-slate-200/80">
+      {/* 2. ABOUT AL-NOOR SECTION */}
+      <section className="py-24 bg-[#F6F5EF] border-b border-primary/10">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Imagery Grid */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            {/* Left Column: Industrial Image & Floating Card */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative rounded overflow-hidden border border-primary/10 shadow-xl bg-white">
                 <img
-                  src={IMAGES.fabricDyeing}
-                  alt="Textile processing machinery at Al-Noor"
+                  src={IMAGES.aboutTextileProcessing}
+                  alt="Industrial fabric stenter and processing line"
                   referrerPolicy="no-referrer"
-                  className="w-full h-80 sm:h-96 object-cover object-center"
+                  className="w-full h-96 object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/80 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <span className="text-[11px] uppercase tracking-wider font-semibold text-[#D4AF37]">
-                    Continuous Pad-Steam Range
-                  </span>
-                  <p className="text-sm font-medium">Precision reactive & vat dyeing in Faisalabad</p>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#063F3A]/60 via-transparent to-transparent" />
               </div>
-
-              {/* Floating Quality Callout Box */}
-              <div className="hidden sm:flex absolute -bottom-6 -right-6 bg-[#0B192C] text-white p-5 rounded-xl border border-[#D4AF37]/40 shadow-2xl items-center gap-4 max-w-xs">
-                <div className="w-12 h-12 rounded-lg bg-[#12243F] border border-[#D4AF37] flex items-center justify-center shrink-0">
-                  <ShieldCheck className="w-6 h-6 text-[#D4AF37]" />
+              {/* Floating Badge Card */}
+              <div className="absolute bottom-6 left-6 right-6 bg-[#063F3A] text-white p-5 rounded border border-[#C8A95A]/30 shadow-2xl flex items-center gap-4">
+                <div className="w-12 h-12 rounded bg-[#042F2B] border border-[#A7E85A] flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-6 h-6 text-[#A7E85A]" />
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-wider text-slate-400 font-semibold">Standard</div>
-                  <div className="text-sm font-bold text-white">ASTM 4-Point & ISO 105 Fastness</div>
+                  <div className="text-[10px] uppercase tracking-widest text-[#A7E85A] font-bold">Verified Trust</div>
+                  <div className="text-sm font-bold text-white">Established Textile Processing Company</div>
                 </div>
               </div>
             </div>
 
-            {/* Right Content */}
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#B8860B]">
-                <span>About Al-Noor Textile Mills</span>
+            {/* Right Column: Introduction */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="text-xs font-bold uppercase tracking-widest text-[#C8A95A]">
+                <span>ABOUT AL-NOOR</span>
               </div>
 
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-brand">
-                Precision Textile Processing & Continuous Dyeing Since 2004
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#063F3A] tracking-tight font-brand leading-tight">
+                Committed to Quality in Every Process
               </h2>
 
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Located on Sargodha Road in Faisalabad, Pakistan’s textile capital, <strong>Al-Noor Processing And Textile Mills (Pvt.) Ltd.</strong> has established itself as an industry benchmark in fabric pre-treatment, continuous dyeing, stentering, and compressive sanforizing.
+              <p className="text-[#123C38]/85 text-sm sm:text-base leading-relaxed">
+                Located in the prominent industrial fabric hub of Chak No. 7-JB on Sargodha Road, Faisalabad, <strong>Al-Noor Processing & Textile Mills (Pvt.) Ltd.</strong> has spent over two decades developing high-performance pre-treatment, reactive dyeing, stentered heat setting, and compressive sanforizing solutions.
               </p>
 
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                We partner with high-volume garment exporters, workwear producers, and luxury home textile manufacturers who demand rigorous shade reproducibility, high tensile retention, and predictable delivery timelines.
+              <p className="text-[#123C38]/85 text-sm leading-relaxed">
+                We operate continuous open-width preparation lines, pad-dry-steam range configurations, and highly-calibrated color kitchen machinery that empower B2B buyers and apparel exporters to achieve precise shade repeatability and strict wash-fastness benchmarks.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-800">
-                  <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
-                  <span>State-of-the-art Stenter Chambers</span>
+              {/* Verified Statistics Grid */}
+              <div className="grid grid-cols-2 gap-6 pt-4 border-t border-primary/10">
+                <div>
+                  <div className="text-3xl font-extrabold font-brand text-[#063F3A] tracking-tight">22+ Years</div>
+                  <div className="text-xs uppercase tracking-wider text-[#123C38]/70 mt-1">Established Experience</div>
                 </div>
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-800">
-                  <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
-                  <span>Computerized QA Lab & D65 Booths</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-800">
-                  <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
-                  <span>Compressive Sanforizing Range</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-800">
-                  <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
-                  <span>Custom Buyer Formulations</span>
+                <div>
+                  <div className="text-3xl font-extrabold font-brand text-[#063F3A] tracking-tight">10M+ Meters</div>
+                  <div className="text-xs uppercase tracking-wider text-[#123C38]/70 mt-1">Processed Annually</div>
                 </div>
               </div>
 
               <div className="pt-4">
                 <button
                   onClick={() => navigate('about')}
-                  className="px-6 py-3 rounded-lg text-xs uppercase tracking-wider font-bold text-white bg-[#0B192C] hover:bg-[#12243F] transition-all inline-flex items-center gap-2 cursor-pointer shadow-md"
+                  className="px-6 py-3.5 rounded text-xs uppercase tracking-wider font-bold text-white bg-[#063F3A] hover:bg-[#063F3A]/90 transition-all inline-flex items-center gap-2 cursor-pointer shadow-md"
                 >
-                  <span>Learn More About Us</span>
-                  <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
+                  <span>Learn More →</span>
                 </button>
               </div>
             </div>
@@ -219,275 +217,144 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. SERVICES SECTION */}
-      <section className="py-20 bg-[#FAFBFC] border-b border-slate-200/80">
+      {/* 3. TIMELINE PROCESSING SECTION */}
+      <section className="py-24 bg-white border-b border-primary/10">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#B8860B]">
-              Integrated Industrial Capabilities
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#C8A95A]">
+              Manufacturing Pipeline
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-brand mt-2">
-              Our Core Textile Services
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#063F3A] tracking-tight font-brand mt-2">
+              Our Textile Processing Capabilities
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base mt-3">
-              Complete end-to-end textile processing solutions engineered for consistent color fastness, dimensional stability, and luxury hand feel.
+            <p className="text-[#123C38]/80 text-sm mt-3">
+              We manage a streamlined B2B fabric processing workflow, optimizing color fastness, dimensional stability, and tactile performance.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, idx) => {
-              const IconComp = iconMap[service.icon] || Layers;
-              return (
-                <div
-                  key={service.id}
-                  className="bg-white rounded-2xl border border-slate-200/80 hover:border-[#D4AF37]/50 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group"
-                >
-                  {/* Service Image */}
-                  <div className="relative h-48 overflow-hidden bg-slate-100">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute top-4 left-4 w-10 h-10 rounded-lg bg-[#0B192C]/90 border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] shadow-md">
-                      <IconComp className="w-5 h-5" />
-                    </div>
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                      <div className="text-[11px] font-semibold text-[#B8860B] uppercase tracking-wider mb-1">
-                        Service 0{idx + 1}
-                      </div>
-                      <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#0B192C] font-brand">
-                        {service.title}
-                      </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed mt-2 line-clamp-3">
-                        {service.shortDesc}
-                      </p>
-                    </div>
-
-                    <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
-                      <button
-                        onClick={() => navigate('services')}
-                        className="text-xs font-bold text-[#0B192C] group-hover:text-[#B8860B] inline-flex items-center gap-1 transition-colors cursor-pointer"
-                      >
-                        <span>Learn More</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
-
-                      <button
-                        onClick={() => openQuoteModal({ requiredService: service.title })}
-                        className="text-xs font-semibold px-3 py-1.5 rounded bg-amber-50 text-amber-900 hover:bg-[#D4AF37] hover:text-slate-950 transition-colors"
-                      >
-                        Quote Service
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. PRODUCTION & MACHINERY SECTION */}
-      <section className="py-20 bg-[#0B192C] text-white border-b border-slate-800 relative overflow-hidden">
-        <div className="absolute inset-0 textile-grid-dark opacity-50" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#D4AF37]">
-                Infrastructure & Technology
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-brand">
-                Modern Machinery & High-Efficiency Processing Lines
-              </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                Our mill on Sargodha Road houses advanced processing infrastructure designed for high daily throughput without sacrificing quality precision.
+          {/* Visual Process Timeline Block (No cards within cards - clean editorial line) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative pt-6">
+            <div className="space-y-3 relative pl-8 border-l border-[#C8A95A]/35">
+              <div className="absolute left-0 top-1 -translate-x-[5px] w-[11px] h-[11px] rounded-full bg-[#A7E85A] ring-4 ring-[#F6F5EF]" />
+              <div className="text-xs font-bold font-mono text-[#C8A95A] tracking-wider">PROCESS 01</div>
+              <h3 className="text-lg font-bold text-[#063F3A] font-brand">Fabric Preparation</h3>
+              <p className="text-xs text-[#123C38]/80 leading-relaxed">
+                Meticulous singeing to eliminate protruding surface hairs, followed by enzyme desizing, scouring, and optical bleaching to establish an evenly absorbent foundation.
               </p>
-
-              <div className="space-y-4 pt-2">
-                <div className="p-4 rounded-xl bg-[#12243F]/80 border border-slate-700/80 flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#070D1E] border border-[#D4AF37] flex items-center justify-center shrink-0 text-[#D4AF37]">
-                    <Cpu className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-white">Modern Continuous Machinery</h4>
-                    <p className="text-xs text-slate-300 mt-1">
-                      Continuous pad-steam dyeing ranges, multi-chamber stenters with automated Mahlo weft straighteners, and chainless mercerizers.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-xl bg-[#12243F]/80 border border-slate-700/80 flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#070D1E] border border-[#D4AF37] flex items-center justify-center shrink-0 text-[#D4AF37]">
-                    <Factory className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-white">Efficient Production & Capacity</h4>
-                    <p className="text-xs text-slate-300 mt-1">
-                      Daily processing capacity exceeding 75,000 meters across lightweight voiles, twills, heavyweight drills, and wide home textiles.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-xl bg-[#12243F]/80 border border-slate-700/80 flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#070D1E] border border-[#D4AF37] flex items-center justify-center shrink-0 text-[#D4AF37]">
-                    <Users className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-white">Skilled Workforce & Shift Supervisors</h4>
-                    <p className="text-xs text-slate-300 mt-1">
-                      50+ experienced textile technologists, master dyers, and laboratory chemists monitoring process parameters 24/6.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-xl bg-[#12243F]/80 border border-slate-700/80 flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-[#070D1E] border border-[#D4AF37] flex items-center justify-center shrink-0 text-[#D4AF37]">
-                    <ShieldCheck className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-white">Quality Inspection & Lab Approval</h4>
-                    <p className="text-xs text-slate-300 mt-1">
-                      100% lighted inspection tables, computerized spectrophotometer color verification, tensile testers, and shrinkage audit.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <button
-                  onClick={() => navigate('production')}
-                  className="px-6 py-3 rounded-lg text-xs uppercase tracking-wider font-bold text-slate-950 gold-gradient-bg hover:brightness-110 transition-all inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-[#D4AF37]/20"
-                >
-                  <span>Explore Facilities & Machinery</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
             </div>
 
-            {/* Right Images Showcase */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div
-                  className="rounded-xl overflow-hidden border border-slate-700 shadow-xl cursor-pointer group"
-                  onClick={() => openLightbox({ url: IMAGES.textileFinishing, title: 'Multi-Chamber Stenter Frame', category: 'Machines' })}
-                >
-                  <img
-                    src={IMAGES.textileFinishing}
-                    alt="Finishing Stenter"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-44 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div
-                  className="rounded-xl overflow-hidden border border-slate-700 shadow-xl cursor-pointer group"
-                  onClick={() => openLightbox({ url: IMAGES.qualityLab, title: 'In-House Testing Laboratory', category: 'Quality' })}
-                >
-                  <img
-                    src={IMAGES.qualityLab}
-                    alt="Testing Lab"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-36 sm:h-44 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
+            <div className="space-y-3 relative pl-8 border-l border-[#C8A95A]/35">
+              <div className="absolute left-0 top-1 -translate-x-[5px] w-[11px] h-[11px] rounded-full bg-[#A7E85A] ring-4 ring-[#F6F5EF]" />
+              <div className="text-xs font-bold font-mono text-[#C8A95A] tracking-wider">PROCESS 02</div>
+              <h3 className="text-lg font-bold text-[#063F3A] font-brand">Dyeing</h3>
+              <p className="text-xs text-[#123C38]/80 leading-relaxed">
+                Continuous reactive and vat dyeing on pad-dry-pad-steam ranges. Fully computerized color recipe matching with Spectrophotometer calibration.
+              </p>
+            </div>
 
-              <div className="space-y-4 pt-6">
-                <div
-                  className="rounded-xl overflow-hidden border border-slate-700 shadow-xl cursor-pointer group"
-                  onClick={() => openLightbox({ url: IMAGES.fabricDyeing, title: 'Continuous Dyeing Range', category: 'Production' })}
-                >
-                  <img
-                    src={IMAGES.fabricDyeing}
-                    alt="Dyeing Range"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-36 sm:h-44 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div
-                  className="rounded-xl overflow-hidden border border-slate-700 shadow-xl cursor-pointer group"
-                  onClick={() => openLightbox({ url: IMAGES.textileWarehouse, title: 'Finished Goods Logistics Center', category: 'Warehouse' })}
-                >
-                  <img
-                    src={IMAGES.textileWarehouse}
-                    alt="Textile Warehouse"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-44 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
+            <div className="space-y-3 relative pl-8 border-l border-[#C8A95A]/35">
+              <div className="absolute left-0 top-1 -translate-x-[5px] w-[11px] h-[11px] rounded-full bg-[#A7E85A] ring-4 ring-[#F6F5EF]" />
+              <div className="text-xs font-bold font-mono text-[#C8A95A] tracking-wider">PROCESS 03</div>
+              <h3 className="text-lg font-bold text-[#063F3A] font-brand">Washing & Finishing</h3>
+              <p className="text-xs text-[#123C38]/80 leading-relaxed">
+                Multi-stage hot washing to strip unfixed hydrolyzed dyes, followed by multi-chamber stenter frame stretching and optical weft-alignment for straight grains.
+              </p>
+            </div>
+
+            <div className="space-y-3 relative pl-8 border-l border-[#C8A95A]/35">
+              <div className="absolute left-0 top-1 -translate-x-[5px] w-[11px] h-[11px] rounded-full bg-[#A7E85A] ring-4 ring-[#F6F5EF]" />
+              <div className="text-xs font-bold font-mono text-[#C8A95A] tracking-wider">PROCESS 04</div>
+              <h3 className="text-lg font-bold text-[#063F3A] font-brand">Quality Inspection</h3>
+              <p className="text-xs text-[#123C38]/80 leading-relaxed">
+                Comprehensive 100% lighted inspection tables utilizing the ASTM 4-Point grading system to precisely catalog and map any physical fabric variances.
+              </p>
+            </div>
+
+            <div className="space-y-3 relative pl-8 border-l border-[#C8A95A]/35">
+              <div className="absolute left-0 top-1 -translate-x-[5px] w-[11px] h-[11px] rounded-full bg-[#A7E85A] ring-4 ring-[#F6F5EF]" />
+              <div className="text-xs font-bold font-mono text-[#C8A95A] tracking-wider">PROCESS 05</div>
+              <h3 className="text-lg font-bold text-[#063F3A] font-brand">Final Processing</h3>
+              <p className="text-xs text-[#123C38]/80 leading-relaxed">
+                Compressive mechanical sanforizing to assure residual wash shrinkage is under 2%, followed by silicone calender top-coatings to lock in hand feel.
+              </p>
+            </div>
+
+            <div className="space-y-3 relative pl-8 border-l border-[#C8A95A]/35">
+              <div className="absolute left-0 top-1 -translate-x-[5px] w-[11px] h-[11px] rounded-full bg-[#A7E85A] ring-4 ring-[#F6F5EF]" />
+              <div className="text-xs font-bold font-mono text-[#C8A95A] tracking-wider">PROCESS 06</div>
+              <h3 className="text-lg font-bold text-[#063F3A] font-brand">Packing & Dispatch</h3>
+              <p className="text-xs text-[#123C38]/80 leading-relaxed">
+                Moisture-proof tight tube-wrapping, detailed labeling with batch traceability ID logs, and stacked horizontal storage prepared for direct shipping.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. FEATURED PRODUCTS CATALOG */}
-      <section className="py-20 bg-white border-b border-slate-200/80">
+      {/* 4. PRODUCTS SECTION */}
+      <section className="py-24 bg-[#F6F5EF] border-b border-primary/10">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#B8860B]">
-                Engineered Fabrics
+              <span className="text-xs font-bold uppercase tracking-widest text-[#C8A95A]">
+                Woven Product Catalogue
               </span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-brand mt-1">
-                Featured Textile Solutions
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#063F3A] tracking-tight font-brand mt-2">
+                Our Premium Fabric Solutions
               </h2>
-              <p className="text-slate-600 text-sm mt-2 max-w-xl">
-                Processed, dyed, and finished woven fabrics manufactured for institutional workwear, home textiles, and export apparel.
+              <p className="text-[#123C38]/80 text-sm mt-3 max-w-xl">
+                Processed, dyed, and custom finished woven bases manufactured to withstand industrial applications, luxury home apparel, and B2B specifications.
               </p>
             </div>
 
             <button
               onClick={() => navigate('products')}
-              className="px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider font-bold text-[#0B192C] bg-slate-100 hover:bg-[#0B192C] hover:text-white transition-all inline-flex items-center gap-1.5 self-start md:self-auto cursor-pointer"
+              className="px-6 py-3 rounded text-xs uppercase tracking-wider font-bold text-white bg-[#063F3A] hover:bg-[#063F3A]/90 transition-all inline-flex items-center gap-1.5 self-start md:self-auto cursor-pointer"
             >
-              <span>View Full Catalog</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span>View Full Catalogue →</span>
             </button>
           </div>
 
+          {/* Product Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.slice(0, 4).map(product => (
+            {products.map(product => (
               <div
                 key={product.id}
-                className="bg-[#FAFBFC] rounded-xl border border-slate-200/90 hover:border-[#D4AF37] transition-all duration-300 overflow-hidden flex flex-col group shadow-sm hover:shadow-md"
+                className="bg-white rounded border border-primary/10 hover:border-[#C8A95A] transition-all duration-300 overflow-hidden flex flex-col group shadow-sm hover:shadow-lg"
               >
-                <div className="relative h-44 overflow-hidden bg-slate-200">
+                <div className="relative h-48 overflow-hidden bg-[#F6F5EF]">
                   <img
                     src={product.image}
                     alt={product.name}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 bg-[#0B192C]/90 text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded border border-[#D4AF37]/30">
+                  <div className="absolute top-3 left-3 bg-[#063F3A]/90 text-white text-[9px] uppercase font-bold tracking-widest px-2.5 py-1 rounded">
                     {product.category}
                   </div>
                 </div>
 
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <h3 className="text-sm font-bold text-slate-900 line-clamp-2 group-hover:text-[#0B192C]">
+                    <h3 className="text-base font-bold text-[#063F3A] font-brand leading-snug line-clamp-2">
                       {product.name}
                     </h3>
-                    <div className="mt-2 space-y-1 text-xs text-slate-600">
+                    <p className="text-xs text-[#123C38]/80 line-clamp-3 leading-relaxed mt-2">
+                      {product.description}
+                    </p>
+
+                    <div className="mt-4 pt-4 border-t border-primary/5 space-y-1.5 text-xs text-[#123C38]/90">
                       <div className="flex justify-between">
-                        <span className="text-slate-600">Weight:</span>
-                        <span className="font-semibold text-slate-900">{product.gsm}</span>
+                        <span className="text-[#123C38]/60 font-medium">Composition:</span>
+                        <span className="font-semibold">{product.composition}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-600">Weave:</span>
-                        <span className="font-semibold text-slate-900">{product.weave}</span>
+                        <span className="text-[#123C38]/60 font-medium">GSM:</span>
+                        <span className="font-semibold font-mono">{product.gsm}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-600">Width:</span>
-                        <span className="font-semibold text-slate-900">{product.width}</span>
+                        <span className="text-[#123C38]/60 font-medium">Width:</span>
+                        <span className="font-semibold">{product.width}</span>
                       </div>
                     </div>
                   </div>
@@ -496,12 +363,12 @@ export const HomePage: React.FC = () => {
                     onClick={() =>
                       openQuoteModal({
                         productType: product.name,
-                        fabricSpecs: `${product.gsm}, ${product.weave}, ${product.width}`
+                        fabricSpecs: `Composition: ${product.composition}, GSM: ${product.gsm}, Width: ${product.width}`
                       })
                     }
-                    className="w-full py-2 rounded-lg text-xs uppercase tracking-wider font-bold text-slate-950 gold-gradient-bg hover:brightness-110 active:scale-[0.98] transition-all text-center cursor-pointer shadow-sm"
+                    className="w-full py-2.5 rounded text-xs uppercase tracking-wider font-bold text-[#063F3A] bg-[#A7E85A] hover:bg-[#A7E85A]/90 transition-all text-center cursor-pointer font-brand"
                   >
-                    Request Quote
+                    View Details →
                   </button>
                 </div>
               </div>
@@ -510,105 +377,353 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. QUALITY COMMITMENT SECTION (PREMIUM DARK NAVY) */}
-      <section className="py-20 bg-[#070D1E] text-white border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* 5. QUALITY SECTION (DARK GREEN BACKGROUND) */}
+      <section className="py-24 bg-[#063F3A] text-white border-b border-primary/20 relative overflow-hidden">
+        <div className="absolute inset-0 textile-grid-dark opacity-30" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#D4AF37]">
-              Non-Negotiable Standards
+            <span className="text-xs font-bold uppercase tracking-widest text-[#C8A95A]">
+              B2B Trust Infrastructure
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-brand mt-2">
-              Our 100% Quality Assurance Commitment
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight font-brand mt-2">
+              Quality You Can Trust
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base mt-3">
-              We apply standardized testing protocols at every stage of wet processing, guaranteeing that every meter dispatched meets tight tolerance requirements.
+            <p className="text-[#F6F5EF]/80 text-sm mt-3">
+              We apply standard physical and chemical quality audits to verify that every yard of finished textile conforms to international export standards.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <div className="bg-[#0B192C] p-6 rounded-2xl border border-slate-800 hover:border-[#D4AF37]/50 transition-all text-center space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-[#12243F] border border-[#D4AF37]/40 flex items-center justify-center mx-auto text-[#D4AF37]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-[#042F2B]/90 p-8 rounded border border-primary/25 hover:border-[#C8A95A]/50 transition-all space-y-4">
+              <div className="w-12 h-12 rounded bg-[#063F3A] border border-[#C8A95A]/30 flex items-center justify-center text-[#A7E85A]">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="text-sm font-bold text-white">Quality Control</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                4-Point ASTM fabric grading and continuous flaw tracking on illuminated inspection tables.
+              <h3 className="text-base font-bold text-white font-brand">Quality Control</h3>
+              <p className="text-xs text-[#F6F5EF]/75 leading-relaxed">
+                Inward greige inspections, in-line process temperature checks, and lighted inspection frames post-processing.
               </p>
             </div>
 
-            <div className="bg-[#0B192C] p-6 rounded-2xl border border-slate-800 hover:border-[#D4AF37]/50 transition-all text-center space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-[#12243F] border border-[#D4AF37]/40 flex items-center justify-center mx-auto text-[#D4AF37]">
+            <div className="bg-[#042F2B]/90 p-8 rounded border border-primary/25 hover:border-[#C8A95A]/50 transition-all space-y-4">
+              <div className="w-12 h-12 rounded bg-[#063F3A] border border-[#C8A95A]/30 flex items-center justify-center text-[#A7E85A]">
                 <Cpu className="w-6 h-6" />
               </div>
-              <h3 className="text-sm font-bold text-white">Modern Technology</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Spectrophotometer recipe formulation and computerized tension controls across all ranges.
+              <h3 className="text-base font-bold text-white font-brand">Consistent Processing</h3>
+              <p className="text-xs text-[#F6F5EF]/75 leading-relaxed">
+                Automated chemical dosing kitchen recipes ensuring repeatable shades within Delta-E &lt; 0.8 color fastness tolerance.
               </p>
             </div>
 
-            <div className="bg-[#0B192C] p-6 rounded-2xl border border-slate-800 hover:border-[#D4AF37]/50 transition-all text-center space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-[#12243F] border border-[#D4AF37]/40 flex items-center justify-center mx-auto text-[#D4AF37]">
-                <Users className="w-6 h-6" />
-              </div>
-              <h3 className="text-sm font-bold text-white">Skilled Workforce</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Decades of hands-on expertise from Faisalabad's seasoned textile masters and technicians.
-              </p>
-            </div>
-
-            <div className="bg-[#0B192C] p-6 rounded-2xl border border-slate-800 hover:border-[#D4AF37]/50 transition-all text-center space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-[#12243F] border border-[#D4AF37]/40 flex items-center justify-center mx-auto text-[#D4AF37]">
+            <div className="bg-[#042F2B]/90 p-8 rounded border border-primary/25 hover:border-[#C8A95A]/50 transition-all space-y-4">
+              <div className="w-12 h-12 rounded bg-[#063F3A] border border-[#C8A95A]/30 flex items-center justify-center text-[#A7E85A]">
                 <Award className="w-6 h-6" />
               </div>
-              <h3 className="text-sm font-bold text-white">Consistent Results</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Repeatable shade matching (Delta-E &lt; 0.8) and guaranteed residual shrinkage under 2%.
+              <h3 className="text-base font-bold text-white font-brand">Professional Inspection</h3>
+              <p className="text-xs text-[#F6F5EF]/75 leading-relaxed">
+                Audited to ASTM D5430 4-point standard system with detailed yield scoring reports delivered per consignment roll.
               </p>
             </div>
 
-            <div className="bg-[#0B192C] p-6 rounded-2xl border border-slate-800 hover:border-[#D4AF37]/50 transition-all text-center space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-[#12243F] border border-[#D4AF37]/40 flex items-center justify-center mx-auto text-[#D4AF37]">
+            <div className="bg-[#042F2B]/90 p-8 rounded border border-primary/25 hover:border-[#C8A95A]/50 transition-all space-y-4">
+              <div className="w-12 h-12 rounded bg-[#063F3A] border border-[#C8A95A]/30 flex items-center justify-center text-[#A7E85A]">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <h3 className="text-sm font-bold text-white">Customer Satisfaction</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Transparent test reports, batch traceability, and rapid consultation on every inquiry.
+              <h3 className="text-base font-bold text-white font-brand">Customer Satisfaction</h3>
+              <p className="text-xs text-[#F6F5EF]/75 leading-relaxed">
+                Complete accountability, prompt feedback loops, custom laboratory sample developments, and transparent batch tracking.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. CALL TO ACTION SECTION */}
-      <section className="py-20 bg-gradient-to-b from-[#0B192C] to-[#070D1E] text-white relative">
-        <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#12243F] border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-semibold uppercase tracking-wider">
-            <span>Direct Mill Sourcing • Faisalabad, Pakistan</span>
+      {/* 6. FACTORY / GALLERY */}
+      <section className="py-24 bg-white border-b border-primary/10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#C8A95A]">
+                Visual Proof of Scale
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#063F3A] tracking-tight font-brand mt-2">
+                Our Production Facility
+              </h2>
+            </div>
+
+            {/* Segmented Interactive controls */}
+            <div className="flex items-center gap-1.5 p-1 bg-[#F6F5EF] rounded self-start md:self-auto border border-primary/5">
+              <button
+                onClick={() => setActiveTab('all')}
+                className={`px-3 py-1.5 text-xs font-semibold rounded transition-colors whitespace-nowrap ${
+                  activeTab === 'all'
+                    ? 'bg-[#063F3A] text-white shadow-sm'
+                    : 'text-[#123C38]/70 hover:text-[#063F3A]'
+                }`}
+              >
+                All Images
+              </button>
+              <button
+                onClick={() => setActiveTab('machinery')}
+                className={`px-3 py-1.5 text-xs font-semibold rounded transition-colors whitespace-nowrap ${
+                  activeTab === 'machinery'
+                    ? 'bg-[#063F3A] text-white shadow-sm'
+                    : 'text-[#123C38]/70 hover:text-[#063F3A]'
+                }`}
+              >
+                Machinery & Lines
+              </button>
+              <button
+                onClick={() => setActiveTab('fabrics')}
+                className={`px-3 py-1.5 text-xs font-semibold rounded transition-colors whitespace-nowrap ${
+                  activeTab === 'fabrics'
+                    ? 'bg-[#063F3A] text-white shadow-sm'
+                    : 'text-[#123C38]/70 hover:text-[#063F3A]'
+                }`}
+              >
+                Fabrics & QA
+              </button>
+            </div>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-brand">
-            Looking for a Reliable Textile Processing Partner?
-          </h2>
+          {/* Masonry / Grid Layout */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredGallery.map((img, idx) => (
+              <div
+                key={idx}
+                onClick={() => openLightbox({ url: img.url, title: img.title })}
+                className="group relative rounded overflow-hidden cursor-pointer border border-primary/5 bg-[#F6F5EF] h-64 shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                <img
+                  src={img.url}
+                  alt={img.title}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#063F3A]/90 via-[#063F3A]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                  <h4 className="text-sm font-bold tracking-wide font-brand">{img.title}</h4>
+                  <p className="text-[10px] uppercase tracking-wider text-[#A7E85A] mt-1 font-semibold">Click to enlarge</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-            Whether you require trial lot development or high-volume continuous processing, our Sargodha Road facility is ready to serve your production requirements.
-          </p>
+      {/* 7. WHY CHOOSE AL-NOOR */}
+      <section className="py-24 bg-[#F6F5EF] border-b border-primary/10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#C8A95A]">
+              Operational Excellence
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#063F3A] tracking-tight font-brand mt-2">
+              Why Choose Al-Noor
+            </h2>
+          </div>
 
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-            <button
-              onClick={() => openQuoteModal()}
-              className="px-8 py-4 rounded-xl text-xs uppercase tracking-wider font-bold text-slate-950 gold-gradient-bg hover:brightness-110 active:scale-[0.98] transition-all shadow-xl shadow-[#D4AF37]/20 flex items-center gap-2 cursor-pointer"
-            >
-              <span>Request a Quote</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white p-8 rounded border border-primary/5 hover:border-[#A7E85A]/50 hover:-translate-y-1 transition-all duration-300 shadow-sm flex flex-col space-y-3">
+              <span className="text-xs font-bold text-[#C8A95A] font-mono">01 / CAPABILITY</span>
+              <h3 className="text-base font-bold text-[#063F3A] font-brand">Reliable Processing</h3>
+              <p className="text-xs text-[#123C38]/80 leading-relaxed">
+                Consistency across both small testing lots and major 100,000+ meter continuous dyeing runs.
+              </p>
+            </div>
 
-            <button
-              onClick={() => navigate('contact')}
-              className="px-8 py-4 rounded-xl text-xs uppercase tracking-wider font-semibold text-white bg-slate-800/90 hover:bg-slate-700 border border-slate-600 transition-all cursor-pointer"
-            >
-              <span>Contact Mill Office</span>
-            </button>
+            <div className="bg-white p-8 rounded border border-primary/5 hover:border-[#A7E85A]/50 hover:-translate-y-1 transition-all duration-300 shadow-sm flex flex-col space-y-3">
+              <span className="text-xs font-bold text-[#C8A95A] font-mono">02 / STANDARD</span>
+              <h3 className="text-base font-bold text-[#063F3A] font-brand">Quality Focus</h3>
+              <p className="text-xs text-[#123C38]/80 leading-relaxed">
+                Applying Datacolor electronic kitchens and ISO-graded checking rigs for defect-free fabrics.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded border border-primary/5 hover:border-[#A7E85A]/50 hover:-translate-y-1 transition-all duration-300 shadow-sm flex flex-col space-y-3">
+              <span className="text-xs font-bold text-[#C8A95A] font-mono">03 / EQUIPMENT</span>
+              <h3 className="text-base font-bold text-[#063F3A] font-brand">Modern Operations</h3>
+              <p className="text-xs text-[#123C38]/80 leading-relaxed">
+                Our mill is engineered with advanced stenters, sanforizing rollers, and mercerizing chambers.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded border border-primary/5 hover:border-[#A7E85A]/50 hover:-translate-y-1 transition-all duration-300 shadow-sm flex flex-col space-y-3">
+              <span className="text-xs font-bold text-[#C8A95A] font-mono">04 / DIALOGUE</span>
+              <h3 className="text-base font-bold text-[#063F3A] font-brand">Customer Support</h3>
+              <p className="text-xs text-[#123C38]/80 leading-relaxed">
+                Dedicated technical coordinators, fast dispatch schedules, and prompt WhatsApp response loops.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. CONTACT SECTION (With Map Integration) */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            
+            {/* Contact Details Column */}
+            <div className="lg:col-span-5 space-y-8">
+              <div className="space-y-4">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#C8A95A]">
+                  CONNECT WITH OUR OFFICE
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#063F3A] tracking-tight font-brand leading-none">
+                  Let's Work Together
+                </h2>
+                <p className="text-[#123C38]/80 text-sm leading-relaxed pt-2">
+                  Have an export fabric run or custom pre-treatment schedule to discuss? Send us your requirements or visit our mill on Sargodha Road.
+                </p>
+              </div>
+
+              {/* Direct Info List */}
+              <div className="space-y-4 pt-2">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded bg-[#F6F5EF] border border-[#C8A95A]/30 flex items-center justify-center text-[#063F3A] shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs uppercase font-bold tracking-wider text-[#123C38]/50">Mill Address</h4>
+                    <p className="text-sm font-semibold text-[#063F3A] mt-1">
+                      Chak No. 7-JB, Sargodha Road, Faisalabad, Punjab, Pakistan
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded bg-[#F6F5EF] border border-[#C8A95A]/30 flex items-center justify-center text-[#063F3A] shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs uppercase font-bold tracking-wider text-[#123C38]/50">Direct Lines</h4>
+                    <p className="text-sm font-semibold text-[#063F3A] mt-1 font-mono">
+                      +92 41 8781200 / +92 300 8654321
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded bg-[#F6F5EF] border border-[#C8A95A]/30 flex items-center justify-center text-[#063F3A] shrink-0">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs uppercase font-bold tracking-wider text-[#123C38]/50">Business Email</h4>
+                    <p className="text-sm font-semibold text-[#063F3A] mt-1">
+                      info@alnoortextile.com
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded bg-[#F6F5EF] border border-[#C8A95A]/30 flex items-center justify-center text-[#063F3A] shrink-0">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs uppercase font-bold tracking-wider text-[#123C38]/50">Office Hours</h4>
+                    <p className="text-sm font-semibold text-[#063F3A] mt-1">
+                      Monday - Saturday: 8:00 AM - 6:00 PM PKT
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Interactive Form Column */}
+            <div className="lg:col-span-7 bg-[#F6F5EF] p-8 rounded border border-primary/10 shadow-sm">
+              <h3 className="text-lg font-bold text-[#063F3A] font-brand mb-6">Inquiry Submission</h3>
+              
+              {formSubmitted ? (
+                <div className="p-6 bg-white border-l-4 border-[#A7E85A] rounded text-sm text-[#063F3A] space-y-2">
+                  <p className="font-bold">✓ Thank You for Your Submission</p>
+                  <p className="text-xs text-[#123C38]/80">Your textile processing requirement log has been dispatched to Al-Noor head office. A specialist will follow up shortly with pricing estimates.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleContactSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-[#123C38]/60 mb-1.5">Your Name</label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.fullName}
+                        onChange={e => setFormData(p => ({ ...p, fullName: e.target.value }))}
+                        className="w-full text-sm bg-white rounded border border-primary/10 px-4 py-3 focus:outline-none focus:border-[#C8A95A]"
+                        placeholder="e.g. Muhammad Raza"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-[#123C38]/60 mb-1.5">Company Name</label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.companyName}
+                        onChange={e => setFormData(p => ({ ...p, companyName: e.target.value }))}
+                        className="w-full text-sm bg-white rounded border border-primary/10 px-4 py-3 focus:outline-none focus:border-[#C8A95A]"
+                        placeholder="e.g. Faisalabad Garment Co."
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-[#123C38]/60 mb-1.5">Business Email</label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
+                        className="w-full text-sm bg-white rounded border border-primary/10 px-4 py-3 focus:outline-none focus:border-[#C8A95A]"
+                        placeholder="e.g. partner@firm.com"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-[#123C38]/60 mb-1.5">Phone Number</label>
+                      <input
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
+                        className="w-full text-sm bg-white rounded border border-primary/10 px-4 py-3 focus:outline-none focus:border-[#C8A95A] font-mono"
+                        placeholder="e.g. +92 300 1234567"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[#123C38]/60 mb-1.5">Requirement Specifications</label>
+                    <textarea
+                      required
+                      rows={4}
+                      value={formData.message}
+                      onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
+                      className="w-full text-sm bg-white rounded border border-primary/10 px-4 py-3 focus:outline-none focus:border-[#C8A95A] resize-none"
+                      placeholder="e.g. Need continuous reactive dyeing and soft-silicone finishing for 20,000 meters of combed cotton twill."
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-3.5 rounded text-xs uppercase tracking-wider font-bold text-[#063F3A] bg-[#A7E85A] hover:bg-[#A7E85A]/90 transition-all font-brand cursor-pointer shadow-md shadow-[#A7E85A]/10 text-center"
+                  >
+                    Send Inquiry →
+                  </button>
+                </form>
+              )}
+            </div>
+
+          </div>
+
+          {/* Map Embed Section */}
+          <div className="mt-16 rounded overflow-hidden border border-primary/10 shadow-sm h-96 relative bg-[#F6F5EF]">
+            <iframe
+              src="https://maps.google.com/maps?q=Sargodha+Road+Faisalabad+Pakistan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              className="w-full h-full border-none opacity-95"
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Al-Noor Processing & Textile Mills Faisalabad Map"
+            />
           </div>
         </div>
       </section>

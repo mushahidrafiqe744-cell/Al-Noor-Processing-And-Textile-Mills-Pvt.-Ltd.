@@ -7,7 +7,6 @@ import {
   Cpu,
   ShieldCheck,
   CheckCircle2,
-  ArrowRight,
   Calculator,
   ChevronRight
 } from 'lucide-react';
@@ -25,28 +24,28 @@ export const ServicesPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-[#FAFBFC]">
+    <div className="w-full bg-[#F6F5EF] text-[#123C38]">
       {/* 1. Page Banner */}
-      <section className="bg-[#070D1E] text-white py-16 lg:py-24 relative overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 textile-grid-dark opacity-40" />
+      <section className="bg-[#063F3A] text-white py-20 lg:py-28 relative overflow-hidden border-b border-[#063F3A]/20">
+        <div className="absolute inset-0 textile-grid-dark opacity-30" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#D4AF37]">
-              Industrial Processing Capabilities
+            <span className="text-xs font-bold uppercase tracking-widest text-[#C8A95A]">
+              Industrial Capabilities
             </span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-brand mt-2 mb-4">
-              Our Textile Processing & Finishing Services
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-brand mt-2 mb-4 leading-none">
+              Textile Processing & Finishing Services
             </h1>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+            <p className="text-sm sm:text-base text-[#F6F5EF]/80 leading-relaxed font-normal">
               State-of-the-art wet processing lines on Sargodha Road, Faisalabad engineered to deliver vibrant shades, uniform absorbency, and stable fabric dimensions.
             </p>
           </div>
         </div>
       </section>
 
-      {/* 2. Interactive Navigation Filter / Anchors */}
-      <div className="bg-white border-b border-slate-200 sticky top-16 z-30 shadow-xs">
-        <div className="max-w-7xl mx-auto px-6 py-3 overflow-x-auto no-scrollbar">
+      {/* 2. Interactive Navigation Filter */}
+      <div className="bg-white border-b border-primary/10 sticky top-16 z-30 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 py-4 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-2 min-w-max">
             {services.map(s => {
               const IconComp = iconMap[s.icon] || Layers;
@@ -59,10 +58,10 @@ export const ServicesPage: React.FC = () => {
                     const el = document.getElementById(s.slug);
                     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className={`px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
+                  className={`px-4 py-2 rounded text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-[#0B192C] text-[#D4AF37] shadow-sm'
-                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                      ? 'bg-[#063F3A] text-[#A7E85A] shadow-sm'
+                      : 'bg-[#F6F5EF] text-[#123C38] hover:bg-[#F6F5EF]/80'
                   }`}
                 >
                   <IconComp className="w-4 h-4" />
@@ -84,13 +83,13 @@ export const ServicesPage: React.FC = () => {
             <section
               key={service.id}
               id={service.slug}
-              className="scroll-mt-32 pt-8 border-t border-slate-200/80 first:border-t-0 first:pt-0"
+              className="scroll-mt-32 pt-8 border-t border-primary/10 first:border-t-0 first:pt-0"
             >
-              <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 items-start ${isEven ? 'lg:flex-row-reverse' : ''}`}>
-                {/* Visual Column (5 cols) */}
+              <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-start ${isEven ? 'lg:flex-row-reverse' : ''}`}>
+                {/* Visual Column */}
                 <div className={`lg:col-span-5 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
                   <div
-                    className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl group cursor-pointer bg-slate-900"
+                    className="relative rounded overflow-hidden border border-primary/10 shadow-xl group cursor-pointer bg-[#063F3A]"
                     onClick={() => openLightbox({ url: service.image, title: service.title, category: 'Services' })}
                   >
                     <img
@@ -99,24 +98,24 @@ export const ServicesPage: React.FC = () => {
                       referrerPolicy="no-referrer"
                       className="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B192C]/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#063F3A]/80 via-transparent to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <div className="text-[11px] uppercase tracking-wider font-bold text-[#D4AF37]">
+                      <div className="text-[10px] uppercase tracking-wider font-bold text-[#A7E85A]">
                         Al-Noor Mill Asset
                       </div>
-                      <div className="text-sm font-semibold">{service.title}</div>
+                      <div className="text-sm font-bold">{service.title}</div>
                     </div>
                   </div>
 
                   {/* Capabilities List Box */}
-                  <div className="mt-6 p-5 rounded-xl bg-white border border-slate-200 shadow-xs space-y-3">
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                  <div className="mt-6 p-6 rounded bg-white border border-primary/10 shadow-xs space-y-3">
+                    <div className="text-xs font-bold uppercase tracking-wider text-[#063F3A]">
                       Technical Capabilities
                     </div>
-                    <ul className="space-y-2 text-xs text-slate-600">
+                    <ul className="space-y-2.5 text-xs text-[#123C38]/85">
                       {service.capabilities.map((cap, cIdx) => (
                         <li key={cIdx} className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#B8860B] shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C8A95A] shrink-0" />
                           <span>{cap}</span>
                         </li>
                       ))}
@@ -124,37 +123,37 @@ export const ServicesPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Content Column (7 cols) */}
+                {/* Content Column */}
                 <div className={`lg:col-span-7 space-y-6 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-[#0B192C] text-[#D4AF37] border border-[#D4AF37]/40 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded bg-[#063F3A] text-[#A7E85A] border border-[#C8A95A]/30 flex items-center justify-center">
                       <IconComp className="w-5 h-5" />
                     </div>
-                    <span className="text-xs font-bold uppercase tracking-widest text-[#B8860B]">
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#C8A95A]">
                       Service Specification 0{index + 1}
                     </span>
                   </div>
 
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-brand">
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-[#063F3A] font-brand">
                     {service.title}
                   </h2>
 
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-[#123C38]/85 leading-relaxed">
                     {service.fullDesc}
                   </p>
 
                   {/* Key Benefits */}
                   <div className="space-y-3 pt-2">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-[#063F3A]">
                       Key Benefits & Assurances
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {service.keyBenefits.map((benefit, bIdx) => (
                         <div
                           key={bIdx}
-                          className="flex items-start gap-2.5 p-3 rounded-lg bg-slate-50 border border-slate-200/80 text-xs text-slate-700 font-medium"
+                          className="flex items-start gap-2.5 p-3.5 rounded bg-[#F6F5EF] border border-primary/5 text-xs text-[#123C38] font-medium"
                         >
-                          <CheckCircle2 className="w-4 h-4 text-[#B8860B] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-[#A7E85A] shrink-0 mt-0.5" />
                           <span>{benefit}</span>
                         </div>
                       ))}
@@ -163,22 +162,22 @@ export const ServicesPage: React.FC = () => {
 
                   {/* Step-by-Step Process */}
                   <div className="space-y-3 pt-2">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-[#063F3A]">
                       Standard Operating Process Flow
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {service.processSteps.map(step => (
                         <div
                           key={step.step}
-                          className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1"
+                          className="p-4 rounded bg-white border border-primary/10 shadow-xs space-y-1.5"
                         >
                           <div className="flex items-center gap-2">
-                            <span className="w-5 h-5 rounded-full bg-[#0B192C] text-[#D4AF37] text-[10px] font-bold flex items-center justify-center">
-                              {step.step}
+                            <span className="w-5 h-5 rounded-full bg-[#063F3A] text-[#A7E85A] text-[10px] font-bold flex items-center justify-center font-mono">
+                              0{step.step}
                             </span>
-                            <span className="text-xs font-bold text-slate-900">{step.name}</span>
+                            <span className="text-xs font-bold text-[#063F3A]">{step.name}</span>
                           </div>
-                          <p className="text-[11px] text-slate-500 pl-7 leading-relaxed">
+                          <p className="text-[11px] text-[#123C38]/70 pl-7 leading-relaxed">
                             {step.description}
                           </p>
                         </div>
@@ -187,12 +186,12 @@ export const ServicesPage: React.FC = () => {
                   </div>
 
                   {/* Action CTA for this service */}
-                  <div className="pt-4 flex flex-wrap items-center gap-3">
+                  <div className="pt-4">
                     <button
                       onClick={() => openQuoteModal({ requiredService: service.title })}
-                      className="px-6 py-2.5 rounded-lg text-xs uppercase tracking-wider font-bold text-slate-950 gold-gradient-bg hover:brightness-110 active:scale-[0.98] transition-all flex items-center gap-1.5 shadow-md shadow-[#D4AF37]/20 cursor-pointer"
+                      className="px-6 py-3 rounded text-xs uppercase tracking-wider font-bold text-[#063F3A] bg-[#A7E85A] hover:bg-[#A7E85A]/90 transition-all flex items-center gap-1.5 shadow-md cursor-pointer"
                     >
-                      <Calculator className="w-3.5 h-3.5" />
+                      <Calculator className="w-4 h-4 text-[#063F3A]" />
                       <span>Request Quote for {service.title}</span>
                     </button>
                   </div>

@@ -2,12 +2,12 @@ import { Product, Service, GalleryItem, CompanySettings, ContactMessage, QuoteRe
 import { IMAGES } from '../assets/images';
 
 export const INITIAL_COMPANY_SETTINGS: CompanySettings = {
-  companyName: 'Al-Noor Processing And Textile Mills',
-  legalName: 'Al-Noor Processing And Textile Mills (Pvt.) Ltd.',
-  tagline: 'Quality Textile Processing for a Better Future',
-  subtitle: 'Delivering reliable textile processing solutions through modern technology, skilled expertise and a strong commitment to quality.',
-  heroDescription: 'Equipped with continuous dyeing ranges, stenters, sanforizing machines, and in-house computerized QA labs in the heart of Faisalabad’s textile hub.',
-  address: 'Chak No. 07 JB, Sargodha Road',
+  companyName: 'Al-Noor Processing & Textile Mills',
+  legalName: 'Al-Noor Processing & Textile Mills (Pvt.) Ltd.',
+  tagline: 'Quality Textile Processing, Built for Global Standards',
+  subtitle: 'Delivering reliable textile processing solutions with a commitment to quality, consistency and customer satisfaction.',
+  heroDescription: 'Equipped with continuous dyeing ranges, stenters, sanforizing machines, and in-house computerized QA labs in Faisalabad, Pakistan.',
+  address: 'Chak No. 7-JB, Sargodha Road',
   city: 'Faisalabad',
   country: 'Pakistan',
   postalCode: '38000',
@@ -16,13 +16,13 @@ export const INITIAL_COMPANY_SETTINGS: CompanySettings = {
   primaryEmail: 'info@alnoortextile.com',
   supportEmail: 'mushahidrafiqe744@gmail.com',
   whatsappNumber: '+923008654321',
-  whatsappMessage: 'Hello Al-Noor Textile Mills, I would like to inquire regarding textile processing services.',
+  whatsappMessage: 'Hello Al-Noor Processing & Textile Mills, I would like to inquire regarding textile processing services.',
   workingHours: 'Monday - Saturday: 8:00 AM - 6:00 PM PKT',
-  yearsExperience: 20,
+  yearsExperience: 22,
   employeesCount: 50,
   metersProcessed: '10M+',
   qualityFocus: 100,
-  mission: 'To deliver superior textile dyeing, printing, and fabric finishing solutions with precision, consistent color fastness, and ethical operational standards that empower apparel and home textile manufacturers worldwide.',
+  mission: 'To deliver superior textile dyeing, printing, and fabric finishing solutions with precision, consistent color fastness, and ethical operational standards.',
   vision: 'To be South Asia’s most trusted and sustainable textile processing partner, advancing innovation and technology on Sargodha Road, Faisalabad.',
   googleMapsEmbedUrl: 'https://maps.google.com/maps?q=Sargodha+Road+Faisalabad+Pakistan&t=&z=13&ie=UTF8&iwloc=&output=embed',
 };
@@ -34,8 +34,8 @@ export const INITIAL_SERVICES: Service[] = [
     slug: 'textile-processing',
     icon: 'Layers',
     shortDesc: 'Comprehensive pre-treatment, desizing, scouring, bleaching, and mercerizing for cotton and synthetic blends.',
-    fullDesc: 'Our integrated textile processing plant prepares greige fabric through advanced continuous open-width desizing, scouring, peroxide bleaching, and chainless mercerization. This ensures optimal absorbency, maximum tensile retention, and uniform base readiness for flawless dye uptake.',
-    image: IMAGES.heroTextileMill,
+    fullDesc: 'Our integrated textile processing plant prepares greige fabric through advanced continuous open-width desizing, scouring, peroxide bleaching, and chainless mercerization.',
+    image: IMAGES.aboutTextileProcessing,
     keyBenefits: [
       'Chainless mercerization for enhanced fabric luster & tensile strength',
       'Continuous open-width scouring reducing fabric tension & creasing',
@@ -45,24 +45,25 @@ export const INITIAL_SERVICES: Service[] = [
     capabilities: [
       'Greige to ready-for-dyeing (RFD)',
       'Peroxide bleaching on continuous ranges',
-      'High-absorbency scour for twill, drill & poplin',
-      'Capacity: 75,000 meters per day'
+      'High-absorbency scour for twill, drill & poplin'
     ],
     processSteps: [
-      { step: 1, name: 'Greige Fabric Inspection & Mending', description: 'Batch grading and removal of weaving defects and loose threads.' },
-      { step: 2, name: 'Singeing & Enzymatic Desizing', description: 'Protruding fiber elimination and starch degradation under controlled temp.' },
-      { step: 3, name: 'Continuous Scouring & Bleaching', description: 'Alkaline cleansing and hydrogen peroxide whitening without fiber degradation.' },
-      { step: 4, name: 'Chainless Caustic Mercerization', description: 'Fiber swelling for improved dye reception, dimensional stability, and luster.' }
+      { step: 1, name: 'Fabric Preparation', description: 'Batch grading, singeing, and removal of starch via enzymatic desizing.' },
+      { step: 2, name: 'Dyeing', description: 'Continuous pad-steam, thermosol, and soft-flow reactive dyeing lines.' },
+      { step: 3, name: 'Washing & Finishing', description: 'Thorough soaping, rinsing, multi-chamber stenter heat setting, and sanforizing.' },
+      { step: 4, name: 'Quality Inspection', description: '100% lighted inspection tables applying the internationally recognized ASTM 4-Point System.' },
+      { step: 5, name: 'Final Processing', description: 'Silicone and nano top-treatments for luxurious soft feel or specialized coatings.' },
+      { step: 6, name: 'Packing & Dispatch', description: 'Wrapped, labeled, and securely packaged rolls prepared for direct dispatch.' }
     ]
   },
   {
     id: 'srv-2',
-    title: 'Continuous & Batch Dyeing',
+    title: 'Precision Dyeing',
     slug: 'dyeing',
     icon: 'Droplets',
-    shortDesc: 'Precision shade reproduction using continuous pad-steam, thermosol, and soft-flow reactive dyeing equipment.',
-    fullDesc: 'We specialize in continuous reactive, vat, disperse, and pigment dyeing on automated pad-dry-pad-steam ranges and high-temperature soft-flow jet machines. Our computerized color kitchen and spectrophotometer recipe management guarantee lab-dip-to-bulk delta-E < 0.8 tolerance.',
-    image: IMAGES.fabricDyeing,
+    shortDesc: 'Precision shade reproduction using continuous pad-steam, thermosol, and reactive dyeing equipment.',
+    fullDesc: 'We specialize in continuous reactive, vat, disperse, and pigment dyeing on automated pad-dry-pad-steam ranges.',
+    image: IMAGES.productDyedFabrics,
     keyBenefits: [
       'Computerized color recipe formulation with Datacolor spectrophotometer',
       'High color fastness to washing (ISO 105-C06 Grade 4-5)',
@@ -72,14 +73,15 @@ export const INITIAL_SERVICES: Service[] = [
     capabilities: [
       'Continuous Pad-Steam (CPB) & Thermosol ranges',
       'Reactive, Vat, Disperse, and Direct Dyeing',
-      '100% Cotton, Poly-Cotton (PC), CVC, Linen blends',
-      'Batch sizes from 1,000 to 100,000+ meters'
+      '100% Cotton, Poly-Cotton (PC), CVC, Linen blends'
     ],
     processSteps: [
-      { step: 1, name: 'Lab Dip Formulation & Color Kitchen', description: 'Spectrophotometric shade matching and electronic recipe dispensing.' },
-      { step: 2, name: 'Padding & Controlled Pre-Drying', description: 'Infra-red pre-drying to avoid dye migration before fixing.' },
-      { step: 3, name: 'Steam / Thermosol Dye Fixation', description: 'Saturated steam fixation at 102°C or dry thermosol at 210°C.' },
-      { step: 4, name: 'Multi-Compartment Wash & Soap Off', description: 'Thorough rinsing to remove unfixed surface hydrolyzed dyestuff.' }
+      { step: 1, name: 'Fabric Preparation', description: 'Ready-for-dyeing base check.' },
+      { step: 2, name: 'Dyeing Process', description: 'Precise pad application & pre-drying.' },
+      { step: 3, name: 'Fixation & Washing', description: 'Pad-steam or dry heat curing with optimal rinsing.' },
+      { step: 4, name: 'Quality Inspection', description: 'Spectrophotometric shade validation.' },
+      { step: 5, name: 'Final Processing', description: 'Chemical softening for perfect drape.' },
+      { step: 6, name: 'Packing & Dispatch', description: 'Premium roll packing.' }
     ]
   },
   {
@@ -87,80 +89,27 @@ export const INITIAL_SERVICES: Service[] = [
     title: 'Fabric Finishing',
     slug: 'finishing',
     icon: 'Sparkles',
-    shortDesc: 'Stentering, sanforizing, anti-shrink, water repellent, and soft resin finishes for institutional and fashion fabrics.',
-    fullDesc: 'Our multi-chamber stenter frames with weft-straightening optics and compressive shrinkage sanforizers impart luxurious hand feel, precise dimensional stability (residual shrinkage < 2%), and specialized chemical finishes tailored to client specifications.',
-    image: IMAGES.textileFinishing,
+    shortDesc: 'Stentering, sanforizing, anti-shrink, and specialized chemical finishes.',
+    fullDesc: 'Our multi-chamber stenter frames with weft-straightening optics and compressive shrinkage sanforizers.',
+    image: IMAGES.productFinishedFabrics,
     keyBenefits: [
       'Automatic optical weft-straightener correcting bow & skew (<1.5%)',
       'Rubber belt compressive shrinking (Sanforized zero-shrink finish)',
-      'Custom chemical top-treatments (water-repellent, anti-bacterial, easy-care)',
+      'Custom chemical top-treatments (water-repellent, anti-bacterial)',
       'Silicone, micro-emulsion, and peach skin soft hand feels'
     ],
     capabilities: [
       'Hot air multi-chamber stenter with Mahlo weft straighteners',
       'Sanforizing range for guaranteed wash dimensional stability',
-      'Calendering for chintz, glaze, and smooth surface luster',
-      'Width capability from 44 inches to 126 inches'
+      'Calendering for chintz, glaze, and smooth surface luster'
     ],
     processSteps: [
-      { step: 1, name: 'Finishing Chemical Application', description: 'Padder impregnation of softeners, crosslinkers, or water repellents.' },
-      { step: 2, name: 'Stenter Heat Setting & Weft Alignment', description: 'High-temperature curing, width control, and bow/skew correction.' },
-      { step: 3, name: 'Controlled Rubber-Belt Sanforizing', description: 'Pre-shrinking to lock warp and weft dimensions for garment wash.' },
-      { step: 4, name: 'Cooling & Batch Rolling', description: 'Tension-free cooling zone and precision rolling.' }
-    ]
-  },
-  {
-    id: 'srv-4',
-    title: 'Custom Fabric Processing',
-    slug: 'fabric-processing',
-    icon: 'Cpu',
-    shortDesc: 'Tailored processing for workwear, hospital linens, uniform twills, bedding fabrics, and export grade textiles.',
-    fullDesc: 'From heavy-duty industrial workwear fabrics requiring high-crock fastness and crease resistance to soft high-thread-count sateen bedding, Al-Noor delivers custom chemical formulations and mechanical treatments matching exact buyer requirements.',
-    image: IMAGES.textileWarehouse,
-    keyBenefits: [
-      'Customized processing recipes formulated per buyer specs',
-      'Versatile handling from lightweight 80 GSM voile to 400 GSM heavy drill',
-      'Flexible lot sizes catering to both trial runs and high-volume orders',
-      'Dedicated technical account manager for every processing batch'
-    ],
-    capabilities: [
-      'Workwear Drill & Twill processing (hospitality & industrial)',
-      'Bedding Sheeting, Sateen & Percale processing up to 300cm width',
-      'Pocketing fabric, lining, and fusible canvas treatments',
-      'Flameretardant, soil-release, and antimicrobial coatings'
-    ],
-    processSteps: [
-      { step: 1, name: 'Technical Requirement Analysis', description: 'Reviewing client fabric construction, target shade, and wash specs.' },
-      { step: 2, name: 'Pilot Batch Trial & Approval', description: 'Executing sample run and delivering master swatch for sign-off.' },
-      { step: 3, name: 'Full-Scale Production Execution', description: 'Monitored processing across synchronized machinery lines.' },
-      { step: 4, name: 'Quality Sign-Off & Packaging', description: 'Detailed inspection protocol before dispatch.' }
-    ]
-  },
-  {
-    id: 'srv-5',
-    title: 'Quality Control & Lab Testing',
-    slug: 'quality-control',
-    icon: 'ShieldCheck',
-    shortDesc: 'Rigorous 4-point inspection system, color spectrophotometer audits, tensile strength, and shrinkage verification.',
-    fullDesc: 'Quality is non-negotiable at Al-Noor. Every roll undergoes 100% lighted inspection tables applying the internationally recognized 4-Point System (ASTM D5430). Our internal laboratory verifies tensile strength, tear resistance, colorfastness, crocking, and shrinkage under ISO and AATCC standards.',
-    image: IMAGES.qualityLab,
-    keyBenefits: [
-      '100% 4-Point ASTM fabric inspection with detailed defect mapping',
-      'Internal physical & chemical testing lab with calibrated instruments',
-      'Complete traceability from greige lot number to packaged roll',
-      'Inspection certificates issued with every dispatched consignment'
-    ],
-    capabilities: [
-      'Color fastness testing (Wash, Water, Rubbing, Perspiration, Light)',
-      'Dimensional stability & spirality / skewness measurement',
-      'Tensile & tear strength testing using computerized Elmendorf testers',
-      'Fabric pH and formaldehyde free compliance'
-    ],
-    processSteps: [
-      { step: 1, name: 'Greige Inward Audit', description: 'Checking raw yarn quality, EPI/PPI count, and contamination levels.' },
-      { step: 2, name: 'In-Line Machine Monitoring', description: 'Real-time temperature, pH, chemical pickup, and speed audits.' },
-      { step: 3, name: '100% 4-Point Table Inspection', description: 'Continuous flaw marking, point scoring, and width monitoring.' },
-      { step: 4, name: 'Laboratory Standard Certification', description: 'Physical and chemical testing under ISO & AATCC protocols.' }
+      { step: 1, name: 'Chemical Padding', description: 'Application of softeners, crosslinkers, or water repellents.' },
+      { step: 2, name: 'Heat Setting', description: 'Width control, straightening, and temperature curing.' },
+      { step: 3, name: 'Sanforizing', description: 'Pre-shrinking to lock warp and weft dimensions.' },
+      { step: 4, name: 'Inspection', description: 'Confirming dimensions, soft handle, and zero flaws.' },
+      { step: 5, name: 'Post-Finishing', description: 'Precision luster calendering if required.' },
+      { step: 6, name: 'Dispatch Packing', description: 'Secure packaging for domestic or export shipment.' }
     ]
   }
 ];
@@ -168,189 +117,113 @@ export const INITIAL_SERVICES: Service[] = [
 export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'prod-1',
-    name: '100% Combed Cotton Dyed Twill 3/1',
-    category: 'Dyed Fabrics',
-    description: 'Heavyweight premium dyed cotton twill engineered for luxury workwear, jackets, chinos, and institutional uniforms.',
-    weave: '3/1 Twill',
-    gsm: '240 GSM (7.0 oz/yd²)',
-    width: '58/60 inches (150 cm)',
-    composition: '100% Ring Spun Combed Cotton',
-    finishType: 'Soft Peach Skin & Sanforized (<2% shrinkage)',
-    dyeingMethod: 'Continuous Pad-Steam Vat / Reactive Dyeing',
-    minOrder: '3,000 Meters',
-    image: IMAGES.fabricDyeing,
+    name: 'Processed Fabrics',
+    category: 'Processed Fabrics',
+    description: 'High-quality cotton and poly-cotton blends processed to international standards, optimized for apparel and home textiles.',
+    weave: 'Plain & Twill options',
+    gsm: '120 - 240 GSM',
+    width: '58 to 126 inches',
+    composition: '100% Cotton, Poly-Cotton, CVC',
+    finishType: 'Bleached, Scoured, RFD Base ready for dyeing',
+    dyeingMethod: 'Pre-treatment open-width lines',
+    minOrder: '5,000 Meters',
+    image: IMAGES.productProcessedFabrics,
     featured: true
   },
   {
     id: 'prod-2',
-    name: 'Poly-Cotton CVC Poplin Shirting',
-    category: 'Processed Fabrics',
-    description: 'Crisp, breathable poplin with high tear strength and wrinkle resistance, ideal for corporate shirts and healthcare scrubs.',
-    weave: 'Plain 1/1 Weave',
-    gsm: '120 GSM (3.5 oz/yd²)',
-    width: '58 inches (147 cm)',
-    composition: '65% Cotton / 35% Polyester (CVC)',
-    finishType: 'Easy Care, Crease Resistant & Mercerized',
-    dyeingMethod: 'Thermosol Disperse / Reactive Dyeing',
-    minOrder: '5,000 Meters',
-    image: IMAGES.heroTextileMill,
+    name: 'Dyed Fabrics',
+    category: 'Dyed Fabrics',
+    description: 'Precision continuous reactive or vat dyed fabrics with high color fastness and uniform shade consistency.',
+    weave: 'Twill, Poplin & Sateen',
+    gsm: '130 - 280 GSM',
+    width: '58/60 inches',
+    composition: '100% Ring Spun Combed Cotton or Blends',
+    finishType: 'Sanforized, Mercerized, Crease-Resistant',
+    dyeingMethod: 'Continuous Pad-Dry-Pad-Steam range',
+    minOrder: '3,000 Meters',
+    image: IMAGES.productDyedFabrics,
     featured: true
   },
   {
     id: 'prod-3',
-    name: 'High-Luster Cotton Sateen Bedding Fabric',
+    name: 'Finished Fabrics',
     category: 'Finished Fabrics',
-    description: 'Silky smooth 300–400 thread count sateen for luxury hotel bedding and retail home textiles with exceptional drapability.',
-    weave: '4/1 Sateen Weave',
-    gsm: '145 GSM (4.2 oz/yd²)',
-    width: '110–126 inches (280–320 cm)',
-    composition: '100% Long Staple Cotton',
-    finishType: 'Double Mercerized & Ultra Soft Silicone Calender',
-    dyeingMethod: 'Low-Salt Eco Reactive Dyeing (Oeko-Tex Standard)',
+    description: 'Textiles top-treated with specialized finishes including peach skin brush peaching, water-repellency, or antimicrobial guards.',
+    weave: 'Sateen, Canvas & Plain',
+    gsm: '140 - 350 GSM',
+    width: 'Up to 126 inches width capability',
+    composition: 'Cotton, Cotton-Linen, CVC, Poly-Cotton',
+    finishType: 'Double Mercerized, Tumble Soft, Calendered Luster',
+    dyeingMethod: 'Low-Salt Eco-Reactive Dyeing / Bleached Base',
     minOrder: '3,000 Meters',
-    image: IMAGES.textileFinishing,
+    image: IMAGES.productFinishedFabrics,
     featured: true
   },
   {
     id: 'prod-4',
-    name: 'Industrial Heavy Duck Canvas',
+    name: 'Custom Textile Processing',
     category: 'Custom Textile Solutions',
-    description: 'High tensile density canvas processed for heavy-duty tote bags, military equipment covers, upholstery, and footwear.',
-    weave: '2/2 Plain Basket Weave',
-    gsm: '380 GSM (11.2 oz/yd²)',
-    width: '60 inches (152 cm)',
-    composition: '100% Heavy Cotton Yarn',
-    finishType: 'Water Repellent & Mildew Resistant Finish',
-    dyeingMethod: 'Direct / Reactive Continuous Impregnation',
-    minOrder: '2,000 Meters',
-    image: IMAGES.textileWarehouse,
-    featured: true
-  },
-  {
-    id: 'prod-5',
-    name: 'Hospitality Plain Sheeting Fabric',
-    category: 'Processed Fabrics',
-    description: 'Durable, high-bleach-resistant white sheeting designed to withstand repeated commercial laundry and institutional wash cycles.',
-    weave: '1/1 Sheeting Weave',
-    gsm: '135 GSM (4.0 oz/yd²)',
-    width: '90–120 inches (228–305 cm)',
-    composition: '50% Cotton / 50% Polyester',
-    finishType: 'Chlorine-Fast White Optical Bleach & Stentered',
-    dyeingMethod: 'Continuous Hydrogen Peroxide Bleaching',
-    minOrder: '5,000 Meters',
-    image: IMAGES.heroTextileMill,
-    featured: false
-  },
-  {
-    id: 'prod-6',
-    name: 'Anti-Static Flame Retardant Workwear Drill',
-    category: 'Custom Textile Solutions',
-    description: 'Engineered protective fabric with woven carbon antistatic grid and flame-retardant finish for oil & gas refinery workwear.',
-    weave: '2/1 Left Hand Twill',
-    gsm: '260 GSM (7.6 oz/yd²)',
-    width: '58 inches (147 cm)',
-    composition: '99% Cotton / 1% Carbon Antistatic Fiber',
-    finishType: 'Pyrovatex / Proban Flame Retardant + Oil Repellent',
-    dyeingMethod: 'Vat Dyeing with Maximum Light & Wash Fastness',
+    description: 'Custom textile formulations engineered to specifications for workwear twills, protective uniforms, or hospitality bedding.',
+    weave: 'Heavy Duck, Basket Weave, Twill',
+    gsm: '150 - 400 GSM',
+    width: 'Customized width specifications',
+    composition: 'Cotton, Polyester/Cotton, Flame Retardant Blends',
+    finishType: 'Water/Oil Repellent, Anti-Static, Proban Flame Retardant',
+    dyeingMethod: 'Continuous Impregnation & Vat Dyeing',
     minOrder: '2,500 Meters',
-    image: IMAGES.qualityLab,
+    image: IMAGES.productCustomProcessing,
     featured: true
-  },
-  {
-    id: 'prod-7',
-    name: 'Premium Slub Linen-Cotton Blend Fabric',
-    category: 'Dyed Fabrics',
-    description: 'Textured casual wear fabric with natural slub aesthetic, soft garment-dyed appeal for summer shirts and trousers.',
-    weave: 'Plain with textured slub filling',
-    gsm: '160 GSM (4.7 oz/yd²)',
-    width: '56 inches (142 cm)',
-    composition: '70% Cotton / 30% Natural Linen',
-    finishType: 'Tumble Aero Soft Air-Flow Finish',
-    dyeingMethod: 'Continuous Reactive Dyeing with Muted Earthy Tones',
-    minOrder: '3,000 Meters',
-    image: IMAGES.fabricDyeing,
-    featured: false
-  },
-  {
-    id: 'prod-8',
-    name: 'Silicone Finished Micro-Peached Twill',
-    category: 'Finished Fabrics',
-    description: 'Ultra-soft hand feel micro-sanded twill for high-end fashion apparel, jackets, and cargo pants.',
-    weave: '2/1 Right Hand Twill',
-    gsm: '210 GSM (6.2 oz/yd²)',
-    width: '58 inches (147 cm)',
-    composition: '98% Cotton / 2% Elastane Spandex',
-    finishType: 'Carbon Brush Peaching + Nano Silicone Softening',
-    dyeingMethod: 'Continuous Pad-Steam Dyeing',
-    minOrder: '3,500 Meters',
-    image: IMAGES.textileFinishing,
-    featured: false
   }
 ];
 
 export const INITIAL_GALLERY: GalleryItem[] = [
   {
     id: 'gal-1',
-    title: 'Main Processing & Stenter Hall',
+    title: 'Continuous Dyeing & Processing Floor',
     category: 'Factory',
-    image: IMAGES.heroTextileMill,
-    description: 'Panoramic view of the primary finishing and processing floor at Sargodha Road, Faisalabad.',
+    image: IMAGES.heroTextileFactory,
+    description: 'State-of-the-art open width processing machinery hall on Sargodha Road, Faisalabad.',
     date: '2026'
   },
   {
     id: 'gal-2',
-    title: 'Continuous Reactive Dyeing Range',
+    title: 'Advanced Stenter & Finishing Machine',
     category: 'Machines',
-    image: IMAGES.fabricDyeing,
-    description: 'Modern pad-steam dyeing section processing continuous 100% cotton rolls.',
+    image: IMAGES.aboutTextileProcessing,
+    description: 'Continuous chemical padding, drying and weft alignment alignment.',
     date: '2026'
   },
   {
     id: 'gal-3',
-    title: 'Multi-Chamber Stenter with Optical Weft Straightener',
-    category: 'Machines',
-    image: IMAGES.textileFinishing,
-    description: 'High-speed stenter ensuring accurate width control and heat setting.',
+    title: 'High-Density Raw Processed Fabrics',
+    category: 'Fabrics',
+    image: IMAGES.productProcessedFabrics,
+    description: 'Ready-for-dyeing organic cotton rolls post-bleaching.',
     date: '2026'
   },
   {
     id: 'gal-4',
-    title: 'Computerized Color & Quality Testing Lab',
-    category: 'Production',
-    image: IMAGES.qualityLab,
-    description: 'Spectrophotometric shade matching and tensile strength measurement under D65 illuminants.',
+    title: 'Uniform Vat and Reactive Dyeing Stacks',
+    category: 'Fabrics',
+    image: IMAGES.productDyedFabrics,
+    description: 'Folded dyed fabrics ready for delivery to premium garment factories.',
     date: '2026'
   },
   {
     id: 'gal-5',
-    title: 'Finished Fabric Rolls Logistics Center',
+    title: 'Post-Processing Inspection & QA Calibration',
     category: 'Production',
-    image: IMAGES.textileWarehouse,
-    description: 'Wrapped and labeled finished textile consignments prepared for domestic and export shipment.',
+    image: IMAGES.productFinishedFabrics,
+    description: 'Lightbox spectrophotometric shade monitoring and fabric evaluation.',
     date: '2026'
   },
   {
     id: 'gal-6',
-    title: 'Precision Dye Kitchen & Recipe Formulation',
-    category: 'Production',
-    image: IMAGES.fabricDyeing,
-    description: 'Automated chemical dosing system ensuring batch-to-batch repeatability.',
-    date: '2026'
-  },
-  {
-    id: 'gal-7',
-    title: 'Skilled Machine Operators & Engineers',
-    category: 'Team',
-    image: IMAGES.qualityLab,
-    description: 'Senior textile technicians monitoring tension, temperature and chemical pick-up.',
-    date: '2026'
-  },
-  {
-    id: 'gal-8',
-    title: 'Premium Combed Cotton Twill & Sateen Swatches',
-    category: 'Fabrics',
-    image: IMAGES.textileFinishing,
-    description: 'Inspection of high-density weave fabric rolls post-sanforizing.',
+    title: 'Completed Textile Logistics Center',
+    category: 'Machines',
+    image: IMAGES.productCustomProcessing,
+    description: 'Wrapped finished fabric rolls ready for dispatch to domestic and international clients.',
     date: '2026'
   }
 ];
@@ -363,21 +236,10 @@ export const INITIAL_CONTACTS: ContactMessage[] = [
     phone: '+92 300 7654321',
     company: 'Crescent Apparel Sourcing',
     subject: 'Bulk Reactive Dyeing Inquiry for Cotton Twill',
-    message: 'We require continuous reactive dyeing for approximately 45,000 meters of 240 GSM 3/1 cotton twill in Navy, Khaki, and Black. Please let us know machine lead times and sample dispatch.',
+    message: 'We require continuous reactive dyeing for approximately 45,000 meters of 240 GSM 3/1 cotton twill in Navy, Khaki, and Black.',
     status: 'read',
     createdAt: '2026-09-22T10:15:00Z',
     internalNotes: 'Contacted over phone. Sample lab dip swatches requested.'
-  },
-  {
-    id: 'msg-2',
-    fullName: 'David Richardson',
-    email: 'david.r@richardsontextiles.co.uk',
-    phone: '+44 7911 123456',
-    company: 'Richardson Textiles Ltd, UK',
-    subject: 'Export Processing for Hospital Bedding Fabrics',
-    message: 'Looking for a reliable processing mill in Faisalabad for bleaching and sanforizing 50/50 poly-cotton sheeting 280cm width with chlorine bleach resistance.',
-    status: 'unread',
-    createdAt: '2026-09-23T14:30:00Z'
   }
 ];
 
@@ -388,61 +250,40 @@ export const INITIAL_QUOTES: QuoteRequest[] = [
     companyName: 'Kohinoor Garments (Pvt) Ltd',
     email: 'm.farooq@kohinoorgarments.pk',
     phone: '+92 321 9876543',
-    productType: '100% Combed Cotton Dyed Twill 3/1',
+    productType: 'Dyed Fabrics',
     quantity: '25000',
     unit: 'Meters',
-    requiredService: 'Continuous & Batch Dyeing',
-    fabricSpecs: '240 GSM, 58" width, 20x16 / 128x60, Color: Olive Green & Navy',
+    requiredService: 'Precision Dyeing',
+    fabricSpecs: '240 GSM, 58" width, Color: Olive Green & Navy',
     targetDate: '2026-10-15',
     message: 'Need urgent processing schedule for upcoming winter uniform export consignment.',
     status: 'reviewing',
     estimatedPrice: 'PKR 145/Meter Processing',
     createdAt: '2026-09-21T09:20:00Z',
-    internalNotes: 'Initial pricing shared via WhatsApp, awaiting client greige fabric arrival.'
-  },
-  {
-    id: 'quote-102',
-    name: 'Sarah Khan',
-    companyName: 'Loom & Thread Home Textiles',
-    email: 'sarah@loomandthread.com',
-    phone: '+92 333 4567890',
-    productType: 'High-Luster Cotton Sateen Bedding Fabric',
-    quantity: '12000',
-    unit: 'Meters',
-    requiredService: 'Fabric Finishing',
-    fabricSpecs: '400 Thread Count, 120" Width, Super Soft Silicone Finish',
-    targetDate: '2026-10-25',
-    message: 'Looking for high luster finish with zero shrinkage warranty for export to Europe.',
-    status: 'pending',
-    createdAt: '2026-09-24T03:10:00Z'
+    internalNotes: 'Initial pricing shared via WhatsApp.'
   }
 ];
 
 export const COMPANY_TIMELINE = [
   {
     year: '2004',
-    title: 'Founding & Inception',
-    description: 'Al-Noor Processing was established on Sargodha Road, Faisalabad with initial batch jigger dyeing and stentering capabilities.'
+    title: 'Inception of Al-Noor Processing',
+    description: 'Established as a specialized processing facility in Faisalabad with premium stenter frames and batch finishing.'
   },
   {
-    year: '2010',
-    title: 'Continuous Range Expansion',
-    description: 'Commissioned modern pad-dry-pad-steam continuous dyeing lines to handle large volume institutional and export workwear.'
+    year: '2012',
+    title: 'Continuous Range Upgrade',
+    description: 'Commissioned fully automated continuous open-width pad-steam ranges for uniform colors.'
   },
   {
-    year: '2016',
-    title: 'Sanforizing & High-Width Finishing',
-    description: 'Installed compressive shrinkage sanforizers and 3.2-meter wide-width finishing stenter frames for home textiles and beddings.'
-  },
-  {
-    year: '2020',
-    title: 'Computerized QA Lab & Spectrophotometry',
-    description: 'Upgraded in-house testing laboratory with Datacolor spectrophotometers, automated chemical dispensing, and ISO standard test equipment.'
+    year: '2018',
+    title: 'High-Width & Shrinkage Control',
+    description: 'Acquired world-class compressive shrinkage sanforizers and wider stenters for B2B sheeting.'
   },
   {
     year: '2026',
-    title: 'Next-Gen Processing & Sustainability',
-    description: 'Processed over 10M+ meters annually with automated heat recovery, reduced water footprints, and serving top apparel exporters.'
+    title: 'Digital Calibration and Green Initiative',
+    description: 'Integrated Datacolor digital kitchen and state-of-the-art heat recovery setups for efficient processing.'
   }
 ];
 
@@ -466,15 +307,5 @@ export const CORE_VALUES = [
     title: 'Customer Focus',
     description: 'Dedicated technical assistance, custom lab-dips, and responsive consultation tailored to each buyer’s specifications.',
     icon: 'Users'
-  },
-  {
-    title: 'Integrity',
-    description: 'Transparent dealings, accurate yield tracking, honest fabric grading, and ethical manufacturing practices.',
-    icon: 'CheckCircle2'
-  },
-  {
-    title: 'Sustainability',
-    description: 'Efficient water recycling, thermal energy conservation, and eco-friendly certified dyestuffs.',
-    icon: 'Leaf'
   }
 ];

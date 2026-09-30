@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
-import { X, Send, Calculator, ShieldCheck, Sparkles } from 'lucide-react';
+import { X, Send, Calculator, ShieldCheck } from 'lucide-react';
 
 export const QuoteModal: React.FC = () => {
   const { isQuoteModalOpen, closeQuoteModal, quotePrefill, submitQuoteForm, products, services } = useApp();
@@ -63,41 +63,41 @@ export const QuoteModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6">
       <div
-        className="bg-[#0B192C] border border-[#D4AF37]/40 rounded-2xl w-full max-w-2xl text-white shadow-2xl overflow-hidden relative my-8"
+        className="bg-[#063F3A] border border-[#C8A95A]/30 rounded w-full max-w-2xl text-white shadow-2xl overflow-hidden relative my-8"
         onClick={e => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-[#070D1E] to-[#12243F] px-6 py-5 border-b border-slate-800 flex items-center justify-between">
+        <div className="bg-[#042F2B] px-6 py-5 border-b border-[#063F3A]/20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#D4AF37]/10 border border-[#D4AF37] flex items-center justify-center text-[#D4AF37]">
+            <div className="w-9 h-9 rounded bg-[#063F3A] border border-[#C8A95A]/30 flex items-center justify-center text-[#A7E85A]">
               <Calculator className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold font-brand text-white">
+              <h3 className="text-lg font-bold font-brand text-white leading-none">
                 Request Manufacturing & Processing Quotation
               </h3>
-              <p className="text-xs text-slate-300">
-                Al-Noor Processing And Textile Mills (Pvt.) Ltd. • Sargodha Road, Faisalabad
+              <p className="text-[11px] text-[#F6F5EF]/60 mt-1.5">
+                Al-Noor Processing & Textile Mills (Pvt.) Ltd. • Sargodha Road, Faisalabad
               </p>
             </div>
           </div>
           <button
             onClick={closeQuoteModal}
-            className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors"
+            className="text-[#F6F5EF]/60 hover:text-white p-1 rounded hover:bg-[#063F3A] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Modal Body Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[80vh] overflow-y-auto">
+        <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[80vh] overflow-y-auto bg-[#042F2B]">
           {/* Row 1: Name & Company */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                Full Name <span className="text-[#D4AF37]">*</span>
+              <label className="block text-xs font-bold text-[#F6F5EF]/80 uppercase tracking-widest mb-1.5">
+                Full Name *
               </label>
               <input
                 type="text"
@@ -105,12 +105,12 @@ export const QuoteModal: React.FC = () => {
                 placeholder="e.g. Muhammad Farooq"
                 value={formData.name}
                 onChange={e => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg bg-[#12243F]/80 border border-slate-700 text-white text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] focus:outline-none transition-all placeholder:text-slate-500"
+                className="w-full px-3.5 py-2.5 rounded bg-[#063F3A]/90 border border-primary/10 text-white text-sm focus:border-[#C8A95A] focus:outline-none transition-all placeholder:text-[#F6F5EF]/30"
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                Company Name <span className="text-[#D4AF37]">*</span>
+              <label className="block text-xs font-bold text-[#F6F5EF]/80 uppercase tracking-widest mb-1.5">
+                Company Name *
               </label>
               <input
                 type="text"
@@ -118,7 +118,7 @@ export const QuoteModal: React.FC = () => {
                 placeholder="e.g. Apex Apparel Sourcing Ltd"
                 value={formData.companyName}
                 onChange={e => setFormData({ ...formData, companyName: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg bg-[#12243F]/80 border border-slate-700 text-white text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] focus:outline-none transition-all placeholder:text-slate-500"
+                className="w-full px-3.5 py-2.5 rounded bg-[#063F3A]/90 border border-primary/10 text-white text-sm focus:border-[#C8A95A] focus:outline-none transition-all placeholder:text-[#F6F5EF]/30"
               />
             </div>
           </div>
@@ -126,8 +126,8 @@ export const QuoteModal: React.FC = () => {
           {/* Row 2: Email & Phone */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                Email Address <span className="text-[#D4AF37]">*</span>
+              <label className="block text-xs font-bold text-[#F6F5EF]/80 uppercase tracking-widest mb-1.5">
+                Email Address *
               </label>
               <input
                 type="email"
@@ -135,12 +135,12 @@ export const QuoteModal: React.FC = () => {
                 placeholder="procurement@company.com"
                 value={formData.email}
                 onChange={e => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg bg-[#12243F]/80 border border-slate-700 text-white text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] focus:outline-none transition-all placeholder:text-slate-500"
+                className="w-full px-3.5 py-2.5 rounded bg-[#063F3A]/90 border border-primary/10 text-white text-sm focus:border-[#C8A95A] focus:outline-none transition-all placeholder:text-[#F6F5EF]/30"
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                Phone / WhatsApp <span className="text-[#D4AF37]">*</span>
+              <label className="block text-xs font-bold text-[#F6F5EF]/80 uppercase tracking-widest mb-1.5">
+                Phone / WhatsApp *
               </label>
               <input
                 type="tel"
@@ -148,7 +148,7 @@ export const QuoteModal: React.FC = () => {
                 placeholder="+92 300 1234567"
                 value={formData.phone}
                 onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg bg-[#12243F]/80 border border-slate-700 text-white text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] focus:outline-none transition-all placeholder:text-slate-500"
+                className="w-full px-3.5 py-2.5 rounded bg-[#063F3A]/90 border border-primary/10 text-white text-sm focus:border-[#C8A95A] focus:outline-none transition-all placeholder:text-[#F6F5EF]/30"
               />
             </div>
           </div>
@@ -156,18 +156,18 @@ export const QuoteModal: React.FC = () => {
           {/* Row 3: Product Type & Required Service */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-[#F6F5EF]/80 uppercase tracking-widest mb-1.5">
                 Target Product / Fabric
               </label>
               <select
                 value={formData.productType}
                 onChange={e => setFormData({ ...formData, productType: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg bg-[#12243F]/80 border border-slate-700 text-white text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] focus:outline-none transition-all"
+                className="w-full px-3.5 py-2.5 rounded bg-[#063F3A]/90 border border-primary/10 text-white text-sm focus:border-[#C8A95A] focus:outline-none transition-all"
               >
                 <option value="">-- Select Product / Custom Spec --</option>
                 {products.map(p => (
                   <option key={p.id} value={p.name}>
-                    {p.name} ({p.gsm})
+                    {p.name}
                   </option>
                 ))}
                 <option value="Custom Buyer Greige Fabric">Custom Buyer Greige Fabric (Twill / Poplin / Sheeting)</option>
@@ -176,13 +176,13 @@ export const QuoteModal: React.FC = () => {
               </select>
             </div>
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                Required Service <span className="text-[#D4AF37]">*</span>
+              <label className="block text-xs font-bold text-[#F6F5EF]/80 uppercase tracking-widest mb-1.5">
+                Required Service *
               </label>
               <select
                 value={formData.requiredService}
                 onChange={e => setFormData({ ...formData, requiredService: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg bg-[#12243F]/80 border border-slate-700 text-white text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] focus:outline-none transition-all"
+                className="w-full px-3.5 py-2.5 rounded bg-[#063F3A]/90 border border-primary/10 text-white text-sm focus:border-[#C8A95A] focus:outline-none transition-all"
               >
                 {services.map(s => (
                   <option key={s.id} value={s.title}>
@@ -197,8 +197,8 @@ export const QuoteModal: React.FC = () => {
           {/* Row 4: Quantity & Unit */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                Estimated Order Quantity <span className="text-[#D4AF37]">*</span>
+              <label className="block text-xs font-bold text-[#F6F5EF]/80 uppercase tracking-widest mb-1.5">
+                Estimated Order Quantity *
               </label>
               <div className="flex gap-2">
                 <input
@@ -209,12 +209,12 @@ export const QuoteModal: React.FC = () => {
                   placeholder="e.g. 10000"
                   value={formData.quantity}
                   onChange={e => setFormData({ ...formData, quantity: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#12243F]/80 border border-slate-700 text-white text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] focus:outline-none transition-all placeholder:text-slate-500"
+                  className="w-full px-3.5 py-2.5 rounded bg-[#063F3A]/90 border border-primary/10 text-white text-sm focus:border-[#C8A95A] focus:outline-none transition-all placeholder:text-[#F6F5EF]/30"
                 />
                 <select
                   value={formData.unit}
                   onChange={e => setFormData({ ...formData, unit: e.target.value as any })}
-                  className="px-3 py-2.5 rounded-lg bg-[#12243F]/80 border border-slate-700 text-white text-xs font-medium focus:border-[#D4AF37] focus:outline-none shrink-0"
+                  className="px-3 py-2.5 rounded bg-[#063F3A]/90 border border-primary/10 text-white text-xs font-medium focus:border-[#C8A95A] focus:outline-none shrink-0"
                 >
                   <option value="Meters">Meters</option>
                   <option value="Yards">Yards</option>
@@ -225,21 +225,21 @@ export const QuoteModal: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-[#F6F5EF]/80 uppercase tracking-widest mb-1.5">
                 Required Delivery Target Date
               </label>
               <input
                 type="date"
                 value={formData.targetDate}
                 onChange={e => setFormData({ ...formData, targetDate: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg bg-[#12243F]/80 border border-slate-700 text-white text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] focus:outline-none transition-all"
+                className="w-full px-3.5 py-2.5 rounded bg-[#063F3A]/90 border border-primary/10 text-white text-sm focus:border-[#C8A95A] focus:outline-none transition-all"
               />
             </div>
           </div>
 
           {/* Row 5: Fabric Specifications */}
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-[#F6F5EF]/80 uppercase tracking-widest mb-1.5">
               Fabric Specifications / Target Colors
             </label>
             <input
@@ -247,13 +247,13 @@ export const QuoteModal: React.FC = () => {
               placeholder="e.g. 240 GSM, 58 inch width, 100% Cotton, Navy / Olive Pantone shades, Peach finish"
               value={formData.fabricSpecs}
               onChange={e => setFormData({ ...formData, fabricSpecs: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-lg bg-[#12243F]/80 border border-slate-700 text-white text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] focus:outline-none transition-all placeholder:text-slate-500"
+              className="w-full px-3.5 py-2.5 rounded bg-[#063F3A]/90 border border-primary/10 text-white text-sm focus:border-[#C8A95A] focus:outline-none transition-all placeholder:text-[#F6F5EF]/30"
             />
           </div>
 
           {/* Row 6: Additional Message */}
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-[#F6F5EF]/80 uppercase tracking-widest mb-1.5">
               Additional Details / Tolerances / Testing Requirements
             </label>
             <textarea
@@ -261,36 +261,36 @@ export const QuoteModal: React.FC = () => {
               placeholder="Mention any specific fastness requirements (e.g. ISO 105-C06), shrinkage allowance, packaging style..."
               value={formData.message}
               onChange={e => setFormData({ ...formData, message: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-lg bg-[#12243F]/80 border border-slate-700 text-white text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] focus:outline-none transition-all placeholder:text-slate-500 resize-none"
+              className="w-full px-3.5 py-2.5 rounded bg-[#063F3A]/90 border border-primary/10 text-white text-sm focus:border-[#C8A95A] focus:outline-none transition-all placeholder:text-[#F6F5EF]/30 resize-none"
             />
           </div>
 
-          {/* Security & Response SLA badge */}
-          <div className="p-3 rounded-lg bg-[#12243F]/50 border border-slate-800 flex items-center justify-between text-xs text-slate-300">
+          {/* SLA badge */}
+          <div className="p-3 rounded bg-[#063F3A] border border-primary/20 flex items-center justify-between text-xs text-[#F6F5EF]/80">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
+              <ShieldCheck className="w-4 h-4 text-[#A7E85A]" />
               <span>Direct Quotation SLA: Response within 24 business hours</span>
             </div>
-            <span className="hidden sm:inline text-amber-300/80 font-medium">Sargodha Rd Mill Desk</span>
+            <span className="hidden sm:inline text-[#C8A95A] font-bold">Mill Desk</span>
           </div>
 
           {/* Modal Action Buttons */}
-          <div className="pt-2 flex items-center justify-end gap-3 border-t border-slate-800">
+          <div className="pt-2 flex items-center justify-end gap-3 border-t border-[#063F3A]/20">
             <button
               type="button"
               onClick={closeQuoteModal}
-              className="px-4 py-2.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="px-4 py-2.5 rounded text-xs font-bold text-[#F6F5EF]/60 hover:text-white transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-6 py-2.5 rounded-lg text-xs uppercase tracking-wider font-bold text-slate-950 gold-gradient-bg hover:brightness-110 active:scale-[0.98] transition-all shadow-md shadow-[#D4AF37]/20 flex items-center gap-2 cursor-pointer disabled:opacity-50"
+              className="px-6 py-2.5 rounded text-xs uppercase tracking-wider font-bold text-[#063F3A] bg-[#A7E85A] hover:bg-[#A7E85A]/90 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50 font-brand"
             >
               {isSubmitting ? (
                 <>
-                  <div className="w-3.5 h-3.5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-3.5 h-3.5 border-2 border-[#063F3A] border-t-transparent rounded-full animate-spin"></div>
                   <span>Processing...</span>
                 </>
               ) : (

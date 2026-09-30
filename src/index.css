@@ -1,21 +1,18 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --color-navy-darkest: #070D1E;
-    --color-navy-main: #0B192C;
-    --color-navy-surface: #12243F;
-    --color-navy-card: #182C4C;
-    --color-gold-light: #F4D37A;
-    --color-gold-main: #D4AF37;
-    --color-gold-dark: #B8860B;
-    --color-gold-muted: #E8D39E;
-  }
+@theme {
+  --color-primary: #063F3A;
+  --color-secondary: #A7E85A;
+  --color-accent: #C8A95A;
+  --color-background-cream: #F6F5EF;
+  --color-text-main: #123C38;
+}
 
+@layer base {
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #1E293B;
-    background-color: #FAFBFC;
+    color: #123C38;
+    background-color: #F6F5EF;
     overflow-x: hidden;
   }
 
@@ -29,13 +26,9 @@
   font-family: 'Outfit', sans-serif;
 }
 
-.font-serif-gold {
-  font-family: 'Cinzel', serif;
-}
-
-/* Glass & Glow utilities */
-.glass-navy {
-  background: rgba(11, 25, 44, 0.88);
+/* Glass effect for navbar */
+.glass-header {
+  background: rgba(6, 63, 58, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -45,28 +38,13 @@
   backdrop-filter: blur(8px);
 }
 
-.gold-gradient-text {
-  background: linear-gradient(135deg, #F9DF88 0%, #D4AF37 50%, #AA7C11 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gold-gradient-bg {
-  background: linear-gradient(135deg, #E5C358 0%, #D4AF37 50%, #B8860B 100%);
-}
-
-.gold-border-subtle {
-  border-color: rgba(212, 175, 55, 0.25);
-}
-
-/* Subtle textile grid / weave background pattern */
+/* Elegant textile weave background pattern */
 .textile-pattern {
-  background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(200, 169, 90, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 .textile-grid-dark {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(167, 232, 90, 0.04) 1px, transparent 1px);
   background-size: 28px 28px;
 }
-

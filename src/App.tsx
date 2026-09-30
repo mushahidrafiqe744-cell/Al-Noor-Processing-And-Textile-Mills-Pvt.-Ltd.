@@ -62,7 +62,7 @@ const MainLayout: React.FC = () => {
   const isAdmin = currentPage === 'admin';
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAFBFC] text-slate-900 font-sans selection:bg-[#D4AF37] selection:text-slate-950">
+    <div className="min-h-screen flex flex-col bg-[#F6F5EF] text-[#123C38] font-sans selection:bg-[#A7E85A] selection:text-[#063F3A]">
       {/* Header is shown on all public pages */}
       {!isAdmin && <Header />}
 
